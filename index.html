@@ -361,8 +361,8 @@
     .wb-title { margin: 0; color: var(--fg); font-family: var(--font-display); font-size: clamp(25px, 2.4vw, 34px); font-weight: 510; line-height: 1.12; letter-spacing: -.022em; }
     .wb-subtitle { max-width: 60ch; margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
     .wb-header-actions, .wb-inline-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-    .wb-btn { display: inline-flex; min-height: 36px; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; color: color-mix(in oklab, var(--accent) 55%, var(--fg)); background: var(--surface); border: 1px solid color-mix(in oklab, var(--accent) 56%, var(--surface)); border-radius: 6px; font-size: 13px; font-weight: 510; transition: background .15s ease, border-color .15s ease, transform .05s ease; }
-    .wb-btn:hover { color: color-mix(in oklab, var(--accent) 55%, var(--fg)); background: var(--accent-soft); border-color: var(--accent); }
+    .wb-btn { display: inline-flex; min-height: 36px; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; color: var(--fg); background: color-mix(in oklch, var(--surface) 98%, var(--fg)); border: 1px solid var(--border); border-radius: 6px; font-size: 13px; font-weight: 510; transition: background .15s ease, border-color .15s ease, transform .05s ease; }
+    .wb-btn:hover { color: var(--fg); background: color-mix(in oklch, var(--surface) 92%, var(--fg)); border-color: color-mix(in oklch, var(--border) 48%, var(--fg)); }
     .wb-btn:active { transform: translateY(1px); }
     .wb-btn-primary { color: var(--surface); background: var(--accent); border-color: var(--accent); }
     .wb-btn-primary:hover { color: var(--surface); background: color-mix(in oklch, var(--accent) 88%, var(--fg)); border-color: color-mix(in oklch, var(--accent) 88%, var(--fg)); }
@@ -371,12 +371,10 @@
     .wb-route { min-height: 36px; flex: 0 0 auto; padding: 0 13px; color: var(--muted); background: transparent; border: 0; border-radius: 6px; font-size: 13px; font-weight: 510; }
     .wb-route:hover { color: var(--fg); background: var(--surface); }
     .wb-route.active { color: var(--fg); background: var(--surface); box-shadow: 0 0 0 1px var(--border); }
-    .wb-brief { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 18px; margin-top: 16px; padding: 20px 22px; color: var(--fg); background: var(--surface); border: 1px solid color-mix(in oklch, var(--border) 72%, var(--accent)); border-radius: 12px; }
+    .wb-brief { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 18px; margin-top: 16px; padding: 20px 22px; color: var(--fg); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
     .wb-brief-label { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; color: var(--fg); font-size: 12px; font-weight: 510; }
-    .wb-brief-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
+    .wb-brief-dot { width: 7px; height: 7px; background: var(--muted); border-radius: 50%; }
     .wb-brief p { max-width: 78ch; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
-    .wb-brief .wb-btn { color: color-mix(in oklab, var(--accent) 55%, var(--fg)); background: var(--surface); border-color: color-mix(in oklab, var(--accent) 56%, var(--surface)); }
-    .wb-brief .wb-btn:hover { color: color-mix(in oklab, var(--accent) 55%, var(--fg)); background: var(--accent-soft); border-color: var(--accent); }
     .wb-section { margin-top: 24px; }
     .wb-section-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; }
     .wb-section-title { margin: 0; color: var(--fg); font-family: var(--font-display); font-size: 16px; font-weight: 590; line-height: 1.35; letter-spacing: -.01em; }
@@ -454,8 +452,8 @@
     .agent-context-answer strong { font-weight: 590; }
     .agent-context-answer .context-muted { color: var(--muted); }
     .agent-context-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-    .agent-context-action { min-height: 34px; padding: 0 11px; color: color-mix(in oklab, var(--accent) 55%, var(--fg)); background: var(--surface); border: 1px solid color-mix(in oklab, var(--accent) 56%, var(--surface)); border-radius: 6px; font-size: 12px; font-weight: 510; }
-    .agent-context-action:hover { color: color-mix(in oklab, var(--accent) 55%, var(--fg)); background: var(--accent-soft); border-color: var(--accent); }
+    .agent-context-action { min-height: 34px; padding: 0 11px; color: var(--fg); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 12px; font-weight: 510; }
+    .agent-context-action:hover { color: var(--fg); background: var(--fg-soft); border-color: color-mix(in oklch, var(--border) 48%, var(--fg)); }
     .agent-context-action.primary { color: var(--surface); background: var(--accent); border-color: var(--accent); }
     .agent-context-action.primary:hover { color: var(--surface); background: color-mix(in oklch, var(--accent) 88%, var(--fg)); border-color: color-mix(in oklch, var(--accent) 88%, var(--fg)); }
     .workbench-action-dialog { width: min(520px, calc(100vw - 32px)); }
@@ -1228,7 +1226,7 @@
                 '<div class="wb-brief-label"><span class="wb-brief-dot" aria-hidden="true"></span>今日经营简报</div>',
                 '<p>今天建议优先处理 3 项高价值事项：1 个阶段停滞商机、1 个新标讯机会、1 个重点客户关系缺口。预计处理时间约 2 小时。</p>',
               '</div>',
-              '<button class="wb-btn" type="button" data-context-id="brief-today" data-od-id="brief-agent-analysis">让 Agent 拆解</button>',
+              '<button class="wb-btn wb-btn-primary" type="button" data-context-id="brief-today" data-od-id="brief-agent-analysis">让 Agent 拆解</button>',
             '</section>',
             '<section class="wb-section" data-od-id="home-kpis">',
               '<div class="wb-section-head"><h2 class="wb-section-title">经营概览</h2><span class="wb-section-meta">数据更新至今天 08:45</span></div>',
