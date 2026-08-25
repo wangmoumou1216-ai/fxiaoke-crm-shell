@@ -10,40 +10,12 @@
   <title>纷享销客 · CRM 工作台</title>
   <style>
     :root {
-      --bg: #EFF1F3;
-      --surface: #FFFFFF;
-      --fg: #181C25;
-      --muted: #91959E;
-      --border: #DEE1E8;
-      --accent: #FF8000;
-
-      --fx-company-main-bg: #EFF1F3;
-      --color-primary06: #FF8000;
-      --color-info06: #0C6CFF;
-      --color-success06: #30C776;
-      --color-danger06: #FF522A;
-      --color-neutrals01: #FFFFFF;
-      --color-neutrals03: #F2F3F5;
-      --color-neutrals05: #DEE1E8;
-      --color-neutrals11: #91959E;
-      --color-neutrals13: #737881;
-      --color-neutrals17: #343841;
-      --color-neutrals19: #181C25;
-      --fx-radius-sm: 4px;
-      --fx-radius-control: 6px;
-      --fx-radius-md: 8px;
-      --fx-radius-lg: 12px;
-      --fx-control-height-sm: 28px;
-      --fx-table-head-height: 36px;
-      --fx-table-row-height: 36px;
-      --fx-pagination-height: 40px;
-      --fx-gap-xs: 4px;
-      --fx-gap-sm: 8px;
-      --fx-gap-md: 12px;
-      --fx-gap-lg: 16px;
-      --fx-shadow-card: 0 8px 24px rgba(24, 28, 37, 0.06);
-      --fx-shadow-pop: 0 12px 32px rgba(24, 28, 37, 0.10);
-      --agent-width: 375px;
+      --bg: oklch(95.72% 0.0034 247.9);
+      --surface: oklch(100% 0 90);
+      --fg: oklch(22.65% 0.0186 266.2);
+      --muted: oklch(66.94% 0.014 266.7);
+      --border: oklch(90.95% 0.01 267.4);
+      --accent: oklch(73.19% 0.1858 53);
 
       --accent-soft: color-mix(in oklch, var(--accent) 13%, transparent);
       --fg-soft: color-mix(in oklch, var(--fg) 6%, transparent);
@@ -265,221 +237,10 @@
     .workspace-column { min-width: 0; height: 100%; padding: 0 12px 12px 20px; transition: margin-right .22s ease; }
     .workspace-tabs { display: flex; height: 40px; align-items: center; padding: 0 14px; background: var(--surface); border-radius: 8px; }
     .workspace-tab { display: inline-flex; height: 28px; align-items: center; color: var(--accent); font-size: 13px; font-weight: 500; }
-    .workspace-card { height: calc(100% - 52px); margin-top: 12px; padding: 0; overflow: hidden; background: transparent; border: 0; border-radius: 0; container-type: inline-size; }
-    .app-root.agent-open .workspace-column { margin-right: var(--agent-width); }
+    .workspace-card { height: calc(100% - 52px); margin-top: 12px; padding: 0; background: var(--surface); border: 0; border-radius: 8px; }
+    .app-root.agent-open .workspace-column { margin-right: 375px; }
 
-    .workbench-root { position: relative; display: flex; height: 100%; min-height: 0; flex-direction: column; color: var(--color-neutrals19); }
-    .workbench-root[hidden] { display: none; }
-    .wb-header { display: flex; min-height: 56px; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: var(--fx-gap-md); padding: 0 16px; background: var(--color-neutrals03); border-bottom: 1px solid var(--color-neutrals05); }
-    .wb-title-group { min-width: 0; }
-    .wb-title { margin: 0; font-size: 18px; font-weight: 600; line-height: 24px; }
-    .wb-subtitle { display: flex; align-items: center; gap: 6px; margin-top: 2px; color: var(--color-neutrals11); font-size: 12px; white-space: nowrap; }
-    .wb-subtitle .fx-svg { width: 12px; height: 12px; }
-    .wb-header-actions { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; }
-    .wb-state-label { display: flex; align-items: center; gap: 6px; color: var(--color-neutrals13); font-size: 12px; }
-    .wb-state-select { height: var(--fx-control-height-sm); max-width: 176px; padding: 0 24px 0 8px; color: var(--color-neutrals19); background: var(--color-neutrals01); border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-control); outline: 0; font-size: 12px; }
-    .wb-state-select:hover { border-color: var(--color-neutrals13); }
-    .wb-state-select:focus-visible { border-color: var(--color-primary06); box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary06) 18%, transparent); }
-    .wb-canvas { min-height: 0; flex: 1; overflow: hidden auto; background: var(--color-neutrals03); scrollbar-color: var(--color-neutrals05) transparent; scrollbar-width: thin; }
-    .wb-view { min-height: 100%; padding: 16px; }
-    .wb-view[hidden] { display: none; }
-    .wb-role-summary { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 16px; background: var(--color-neutrals01); border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-md); }
-    .wb-role-kicker { display: flex; align-items: center; gap: 8px; color: var(--color-neutrals13); font-size: 12px; }
-    .wb-role-kicker .fx-svg { width: 16px; height: 16px; color: var(--color-neutrals17); }
-    .wb-role-summary h2 { margin: 6px 0 0; font-size: 20px; line-height: 28px; }
-    .wb-role-summary p { max-width: 640px; margin: 4px 0 0; color: var(--color-neutrals13); font-size: 13px; }
-    .wb-entry-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 8px; }
-    .wb-btn { display: inline-flex; min-height: var(--fx-control-height-sm); align-items: center; justify-content: center; gap: 6px; padding: 0 12px; color: var(--color-neutrals19); background: var(--color-neutrals01); border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-control); font-size: 13px; white-space: nowrap; }
-    .wb-btn:hover { color: var(--color-neutrals19); background: var(--color-neutrals03); border-color: var(--color-neutrals13); }
-    .wb-btn .fx-svg { width: 14px; height: 14px; }
-    .wb-btn-primary { color: var(--color-neutrals01); background: var(--color-primary06); border-color: var(--color-primary06); }
-    .wb-btn-primary:hover { color: var(--color-neutrals01); background: color-mix(in srgb, var(--color-primary06) 88%, #000); border-color: color-mix(in srgb, var(--color-primary06) 88%, #000); }
-    .wb-btn-text { min-width: 0; padding-inline: 6px; color: var(--color-info06); background: transparent; border-color: transparent; }
-    .wb-btn-text:hover { color: var(--color-info06); background: color-mix(in srgb, var(--color-info06) 8%, transparent); border-color: transparent; }
-    .wb-btn-danger { color: var(--color-danger06); border-color: color-mix(in srgb, var(--color-danger06) 35%, var(--color-neutrals05)); }
-    .wb-btn-danger:hover { color: #fff; background: var(--color-danger06); border-color: var(--color-danger06); }
-    .wb-btn:disabled { cursor: not-allowed; opacity: .45; }
-    .wb-home-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(260px, .8fr); gap: 12px; margin-top: 12px; }
-    .wb-card { min-width: 0; background: var(--color-neutrals01); border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-md); }
-    .wb-card-header { display: flex; min-height: 44px; align-items: center; justify-content: space-between; gap: 12px; padding: 0 12px; border-bottom: 1px solid var(--color-neutrals05); }
-    .wb-card-title { margin: 0; font-size: 15px; font-weight: 600; }
-    .wb-card-meta { color: var(--color-neutrals11); font-size: 12px; }
-    .wb-queue { width: 100%; border-collapse: collapse; table-layout: fixed; }
-    .wb-queue th { height: var(--fx-table-head-height); padding: 0 12px; color: var(--color-neutrals11); background: var(--color-neutrals03); font-size: 12px; font-weight: 500; text-align: left; }
-    .wb-queue td { height: 52px; padding: 6px 12px; border-top: 1px solid var(--color-neutrals05); font-size: 13px; vertical-align: middle; }
-    .wb-queue tbody tr { cursor: pointer; }
-    .wb-queue tbody tr:hover, .wb-queue tbody tr:focus-within { background: color-mix(in srgb, var(--color-info06) 4%, var(--color-neutrals01)); }
-    .wb-task-button { display: flex; width: 100%; min-width: 0; align-items: center; gap: 8px; padding: 0; color: var(--color-neutrals19); background: transparent; border: 0; text-align: left; }
-    .wb-task-icon { display: grid; width: 28px; height: 28px; flex: 0 0 auto; place-items: center; color: var(--color-success06); background: color-mix(in srgb, var(--color-success06) 10%, transparent); border-radius: var(--fx-radius-control); }
-    .wb-task-icon .fx-svg { width: 15px; height: 15px; }
-    .wb-task-copy { min-width: 0; }
-    .wb-task-name, .wb-task-note { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .wb-task-name { font-weight: 500; }
-    .wb-task-note { margin-top: 2px; color: var(--color-neutrals11); font-size: 12px; }
-    .wb-tag { display: inline-flex; min-height: 22px; align-items: center; gap: 4px; padding: 0 7px; color: var(--color-neutrals13); background: var(--color-neutrals03); border: 1px solid var(--color-neutrals05); border-radius: 999px; font-size: 12px; white-space: nowrap; }
-    .wb-tag-info { color: var(--color-info06); background: color-mix(in srgb, var(--color-info06) 7%, #fff); border-color: color-mix(in srgb, var(--color-info06) 24%, var(--color-neutrals05)); }
-    .wb-tag-success { color: color-mix(in srgb, var(--color-success06) 80%, #000); background: color-mix(in srgb, var(--color-success06) 9%, #fff); border-color: color-mix(in srgb, var(--color-success06) 24%, var(--color-neutrals05)); }
-    .wb-tag-warning { color: color-mix(in srgb, var(--color-primary06) 76%, #6b2f00); background: color-mix(in srgb, var(--color-primary06) 9%, #fff); border-color: color-mix(in srgb, var(--color-primary06) 28%, var(--color-neutrals05)); }
-    .wb-side-stack { display: flex; min-width: 0; flex-direction: column; gap: 12px; }
-    .wb-compact-list { margin: 0; padding: 0; list-style: none; }
-    .wb-compact-row { display: grid; grid-template-columns: 36px 1fr; gap: 8px; padding: 12px; }
-    .wb-compact-row + .wb-compact-row { border-top: 1px solid var(--color-neutrals05); }
-    .wb-time { color: var(--color-neutrals13); font-family: var(--font-mono); font-size: 12px; }
-    .wb-compact-title { font-size: 13px; font-weight: 500; }
-    .wb-compact-note { margin-top: 2px; color: var(--color-neutrals11); font-size: 12px; }
-    .wb-empty-mini { padding: 18px 12px; color: var(--color-neutrals11); font-size: 12px; text-align: center; }
-    .wb-context-bar { display: flex; min-height: 48px; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 12px; background: var(--color-neutrals01); border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-md); }
-    .wb-breadcrumb { display: flex; min-width: 0; align-items: center; gap: 6px; color: var(--color-neutrals13); font-size: 12px; }
-    .wb-breadcrumb button { padding: 0; color: var(--color-info06); background: transparent; border: 0; }
-    .wb-breadcrumb strong { min-width: 0; overflow: hidden; color: var(--color-neutrals19); text-overflow: ellipsis; white-space: nowrap; }
-    .wb-context-actions { display: flex; align-items: center; gap: 8px; }
-    .wb-scene-overview { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(240px, .75fr); gap: 12px; margin-top: 12px; }
-    .wb-goal { padding: 16px; }
-    .wb-goal-label { color: var(--color-neutrals11); font-size: 12px; }
-    .wb-goal h2 { margin: 5px 0 0; font-size: 18px; line-height: 26px; }
-    .wb-progress-line { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
-    .wb-progress-track { height: 6px; min-width: 80px; flex: 1; overflow: hidden; background: var(--color-neutrals03); border-radius: 999px; }
-    .wb-progress-fill { width: 52%; height: 100%; background: var(--color-info06); border-radius: inherit; transition: width .2s ease; }
-    .wb-progress-text { color: var(--color-neutrals13); font-size: 12px; white-space: nowrap; }
-    .wb-scope-card { padding: 12px; }
-    .wb-scope-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; }
-    .wb-scope-row + .wb-scope-row { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--color-neutrals05); }
-    .wb-scope-label { color: var(--color-neutrals11); }
-    .wb-scope-value { color: var(--color-neutrals19); font-weight: 500; }
-    .wb-scope-diff { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 10px 12px; color: color-mix(in srgb, var(--color-primary06) 72%, #5d2d00); background: color-mix(in srgb, var(--color-primary06) 8%, #fff); border: 1px solid color-mix(in srgb, var(--color-primary06) 28%, var(--color-neutrals05)); border-radius: var(--fx-radius-control); }
-    .wb-scope-diff strong { color: var(--color-neutrals19); }
-    .wb-scope-diff-actions { display: flex; flex-wrap: wrap; gap: 6px; }
-    .wb-object-grid { display: grid; grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr); gap: 12px; margin-top: 12px; }
-    .wb-object-list { margin: 0; padding: 0; list-style: none; }
-    .wb-object-row { display: grid; width: 100%; min-height: 58px; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 8px 12px; color: var(--color-neutrals19); background: transparent; border: 0; text-align: left; }
-    .wb-object-row + .wb-object-row { border-top: 1px solid var(--color-neutrals05); }
-    .wb-object-row:hover, .wb-object-row.active { background: color-mix(in srgb, var(--color-info06) 5%, #fff); }
-    .wb-object-row.active { box-shadow: inset 2px 0 var(--color-info06); }
-    .wb-object-icon { display: grid; width: 28px; height: 28px; place-items: center; color: var(--color-info06); background: color-mix(in srgb, var(--color-info06) 8%, #fff); border-radius: var(--fx-radius-control); }
-    .wb-object-icon .fx-svg { width: 15px; height: 15px; }
-    .wb-object-name { display: block; overflow: hidden; font-size: 13px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
-    .wb-object-kind { display: block; margin-top: 2px; color: var(--color-neutrals11); font-size: 12px; }
-    .wb-peek { min-height: 100%; padding: 14px; }
-    .wb-peek-empty { display: grid; min-height: 196px; place-items: center; color: var(--color-neutrals11); text-align: center; }
-    .wb-peek h3 { margin: 0; font-size: 15px; }
-    .wb-fact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; margin-top: 12px; }
-    .wb-fact { min-width: 0; }
-    .wb-fact dt { color: var(--color-neutrals11); font-size: 12px; }
-    .wb-fact dd { margin: 3px 0 0; overflow-wrap: anywhere; font-size: 13px; }
-    .wb-peek-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .wb-focus-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(260px, .75fr); gap: 12px; margin-top: 12px; }
-    .wb-focus-main { min-width: 0; }
-    .wb-tabs { display: flex; height: 40px; align-items: flex-end; gap: 20px; padding: 0 12px; border-bottom: 1px solid var(--color-neutrals05); }
-    .wb-tab { position: relative; height: 40px; padding: 0 2px; color: var(--color-neutrals13); background: transparent; border: 0; font-size: 13px; }
-    .wb-tab.active { color: var(--color-neutrals19); font-weight: 600; }
-    .wb-tab.active::after { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; background: var(--color-info06); content: ""; }
-    .wb-tab-panel { padding: 16px; }
-    .wb-section-title { margin: 0; font-size: 15px; }
-    .wb-section-note { margin: 4px 0 0; color: var(--color-neutrals11); font-size: 12px; }
-    .wb-evidence-list { margin: 14px 0 0; padding: 0; list-style: none; }
-    .wb-evidence-item { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 8px; padding: 10px 0; border-top: 1px solid var(--color-neutrals05); }
-    .wb-evidence-item .fx-svg { width: 15px; height: 15px; margin-top: 2px; color: var(--color-info06); }
-    .wb-evidence-title { font-size: 13px; }
-    .wb-evidence-note { margin-top: 2px; color: var(--color-neutrals11); font-size: 12px; }
-    .wb-focus-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .wb-next-step { padding: 14px; }
-    .wb-next-step h3 { margin: 0; font-size: 15px; }
-    .wb-next-step p { margin: 8px 0 0; color: var(--color-neutrals13); font-size: 13px; }
-    .wb-next-step .wb-card-meta { display: block; margin-top: 10px; }
-    .wb-v1-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 12px; margin-top: 12px; }
-    .wb-table-shell { overflow: auto; }
-    .wb-diff-table { width: 100%; min-width: 680px; border-collapse: collapse; }
-    .wb-diff-table th { height: var(--fx-table-head-height); padding: 0 12px; color: var(--color-neutrals11); background: var(--color-neutrals03); font-size: 12px; font-weight: 500; text-align: left; }
-    .wb-diff-table td { min-height: var(--fx-table-row-height); padding: 10px 12px; border-top: 1px solid var(--color-neutrals05); font-size: 13px; vertical-align: top; }
-    .wb-source-link { padding: 0; color: var(--color-info06); background: transparent; border: 0; font-size: 12px; }
-    .wb-v1-side { display: flex; flex-direction: column; gap: 12px; }
-    .wb-v1-side .wb-card { padding: 12px; }
-    .wb-v1-side h3 { margin: 0; font-size: 14px; }
-    .wb-v1-side p { margin: 6px 0 0; color: var(--color-neutrals13); font-size: 12px; }
-    .wb-alert { display: flex; align-items: flex-start; gap: 8px; padding: 10px 12px; color: var(--color-neutrals17); background: var(--color-neutrals03); border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-control); font-size: 13px; }
-    .wb-alert .fx-svg { width: 15px; height: 15px; margin-top: 2px; flex: 0 0 auto; }
-    .wb-alert-warning { color: color-mix(in srgb, var(--color-primary06) 72%, #5d2d00); background: color-mix(in srgb, var(--color-primary06) 8%, #fff); border-color: color-mix(in srgb, var(--color-primary06) 28%, var(--color-neutrals05)); }
-    .wb-alert-danger { color: color-mix(in srgb, var(--color-danger06) 78%, #5d1400); background: color-mix(in srgb, var(--color-danger06) 6%, #fff); border-color: color-mix(in srgb, var(--color-danger06) 26%, var(--color-neutrals05)); }
-    .wb-alert-success { color: color-mix(in srgb, var(--color-success06) 72%, #064b2b); background: color-mix(in srgb, var(--color-success06) 7%, #fff); border-color: color-mix(in srgb, var(--color-success06) 24%, var(--color-neutrals05)); }
-    .wb-state-panel { display: grid; min-height: 340px; place-items: center; padding: 24px; }
-    .wb-state-card { width: min(560px, 100%); padding: 24px; text-align: center; }
-    .wb-state-icon { display: grid; width: 42px; height: 42px; margin: 0 auto 12px; place-items: center; color: var(--color-info06); background: color-mix(in srgb, var(--color-info06) 8%, #fff); border-radius: 50%; }
-    .wb-state-icon .fx-svg { width: 20px; height: 20px; }
-    .wb-state-card h2 { margin: 0; font-size: 18px; }
-    .wb-state-card p { margin: 8px auto 0; color: var(--color-neutrals13); font-size: 13px; }
-    .wb-state-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px; }
-    .wb-skeleton { overflow: hidden; background: linear-gradient(90deg, var(--color-neutrals03) 25%, #fff 42%, var(--color-neutrals03) 62%); background-size: 300% 100%; border-radius: var(--fx-radius-sm); animation: wb-shimmer 1.3s infinite linear; }
-    .wb-skeleton-line { width: 100%; height: 12px; }
-    .wb-skeleton-line.short { width: 56%; }
-    @keyframes wb-shimmer { to { background-position: -300% 0; } }
-    .wb-recovery { display: flex; min-height: 40px; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 16px; color: var(--color-neutrals17); background: color-mix(in srgb, var(--color-info06) 5%, #fff); border-bottom: 1px solid color-mix(in srgb, var(--color-info06) 22%, var(--color-neutrals05)); font-size: 12px; }
-    .wb-monitor-button { color: var(--color-neutrals19); }
-    .wb-monitor-button.running::before { width: 7px; height: 7px; background: var(--color-success06); border-radius: 50%; content: ""; }
-    .wb-monitor-popover { position: absolute; top: 38px; right: 0; z-index: 40; width: 310px; padding: 12px; background: var(--color-neutrals01); border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-md); box-shadow: var(--fx-shadow-pop); }
-    .wb-monitor-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; font-weight: 600; }
-    .wb-monitor-copy { margin-top: 8px; color: var(--color-neutrals13); font-size: 12px; }
-    .wb-monitor-actions { display: flex; gap: 6px; margin-top: 10px; }
-    .wb-receipt-list { margin: 14px 0 0; padding: 0; list-style: none; text-align: left; }
-    .wb-receipt-row { display: grid; grid-template-columns: 18px 1fr auto; gap: 8px; padding: 10px 0; border-top: 1px solid var(--color-neutrals05); }
-    .wb-receipt-row .fx-svg { width: 15px; height: 15px; color: var(--color-success06); }
-    .wb-receipt-row.failed .fx-svg { color: var(--color-danger06); }
-    .wb-checkbox { display: flex; align-items: flex-start; gap: 8px; color: var(--color-neutrals17); font-size: 13px; }
-    .wb-checkbox input { width: 16px; height: 16px; margin: 2px 0 0; accent-color: var(--color-primary06); }
-    .wb-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-    .blank-menu-host { height: 100%; background: var(--color-neutrals01); border-radius: var(--fx-radius-md); }
-
-    .agent-resizer { position: absolute; top: 0; bottom: 0; left: -4px; z-index: 12; width: 8px; cursor: col-resize; }
-    .agent-resizer::after { position: absolute; top: 50%; left: 3px; width: 2px; height: 44px; background: var(--color-neutrals05); border-radius: 2px; content: ""; transform: translateY(-50%); }
-    .agent-resizer:hover::after, .agent-resizer:focus-visible::after { background: var(--color-info06); }
-    .agent-panel-title { font-size: 14px; font-weight: 600; }
-    #popoutAgent { display: none; }
-    .agent-guidance.workbench-mode { padding: 12px 16px 148px; }
-    .agent-workbench-context { display: flex; flex-direction: column; gap: 10px; }
-    .agent-scope-card { padding: 12px; background: var(--color-neutrals03); border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-md); }
-    .agent-scope-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; font-weight: 600; }
-    .agent-scope-status { color: var(--color-neutrals11); font-size: 11px; font-weight: 400; }
-    .agent-scope-grid { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 5px 8px; margin-top: 9px; font-size: 12px; }
-    .agent-scope-grid dt { color: var(--color-neutrals11); }
-    .agent-scope-grid dd { min-width: 0; margin: 0; overflow: hidden; color: var(--color-neutrals17); text-overflow: ellipsis; white-space: nowrap; }
-    .agent-module { padding: 12px; background: var(--color-neutrals01); border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-md); }
-    .agent-module-label { color: var(--color-neutrals11); font-size: 11px; letter-spacing: .04em; }
-    .agent-module h3 { margin: 4px 0 0; font-size: 14px; }
-    .agent-module p { margin: 7px 0 0; color: var(--color-neutrals13); font-size: 12px; line-height: 1.6; }
-    .agent-module-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .agent-source-list { margin: 10px 0 0; padding: 0; list-style: none; }
-    .agent-source-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 0; border-top: 1px solid var(--color-neutrals05); color: var(--color-neutrals13); font-size: 12px; }
-    .agent-source-row button { padding: 0; color: var(--color-info06); background: transparent; border: 0; font-size: 12px; }
-    .agent-choice-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
-    .agent-choice { display: flex; align-items: flex-start; gap: 8px; padding: 8px; border: 1px solid var(--color-neutrals05); border-radius: var(--fx-radius-control); font-size: 12px; }
-    .agent-choice input { margin-top: 2px; accent-color: var(--color-primary06); }
-    .agent-step-list { margin: 10px 0 0; padding: 0; list-style: none; }
-    .agent-step { display: grid; grid-template-columns: 18px 1fr auto; gap: 7px; padding: 7px 0; color: var(--color-neutrals13); border-top: 1px solid var(--color-neutrals05); font-size: 12px; }
-    .agent-step .fx-svg { width: 14px; height: 14px; color: var(--color-success06); }
-    .agent-step.current { color: var(--color-neutrals19); font-weight: 500; }
-
-    .workbench-dialog { display: flex; max-height: min(720px, calc(100vh - 32px)); flex-direction: column; overflow: hidden; }
-    .workbench-dialog .fx-dialog-body { min-height: 0; overflow: auto; }
-    .workbench-dialog .fx-dialog-footer { flex: 0 0 auto; }
-    .wb-preview-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .wb-preview-box { padding: 10px; background: var(--color-neutrals03); border-radius: var(--fx-radius-control); }
-    .wb-preview-box span { display: block; color: var(--color-neutrals11); font-size: 11px; }
-    .wb-preview-box strong { display: block; margin-top: 4px; font-size: 13px; }
-    .wb-dialog-section { margin-top: 16px; }
-    .wb-dialog-section h3 { margin: 0 0 8px; font-size: 14px; }
-    .wb-switch-copy { margin: 0; color: var(--color-neutrals13); font-size: 13px; }
-
-    @container (max-width: 820px) {
-      .wb-role-summary { align-items: stretch; flex-direction: column; }
-      .wb-entry-actions { align-self: flex-start; }
-      .wb-home-grid, .wb-scene-overview, .wb-object-grid, .wb-focus-grid, .wb-v1-grid { grid-template-columns: 1fr; }
-      .wb-fact-grid { grid-template-columns: 1fr; }
-      .wb-state-label > span { display: none; }
-      .wb-state-select { max-width: 138px; }
-      .wb-scope-diff { align-items: flex-start; flex-direction: column; }
-      .wb-v1-side { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-
-    .agent-panel { position: fixed; top: 48px; right: 0; z-index: 650; display: flex; width: var(--agent-width); height: calc(100% - 48px); flex-direction: column; overflow: hidden; background: var(--surface); border-radius: 8px 0 0; transform: translateX(102%); transition: transform .22s ease; }
+    .agent-panel { position: fixed; top: 48px; right: 0; z-index: 650; display: flex; width: 375px; height: calc(100% - 48px); flex-direction: column; overflow: hidden; background: var(--surface); border-radius: 8px 0 0; transform: translateX(102%); transition: transform .22s ease; }
     .app-root.agent-open .agent-panel { transform: translateX(0); }
     .agent-panel.floating { top: 60px; right: 12px; height: calc(100% - 72px); border: 1px solid var(--border); border-radius: 10px; }
     .agent-header { display: flex; height: 48px; flex: 0 0 auto; align-items: center; justify-content: space-between; padding: 0 16px; }
@@ -591,10 +352,122 @@
     .toast { position: fixed; right: 24px; bottom: 24px; z-index: 1000; max-width: 320px; padding: 10px 14px; color: var(--surface); background: var(--fg); border-radius: 8px; box-shadow: color-mix(in oklch, var(--fg) 18%, transparent) 0 8px 24px; font-size: 13px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .16s ease, transform .16s ease; }
     .toast.show { opacity: 1; transform: translateY(0); }
 
+    /* 销售工作台：保留原有浅色壳层，去掉中央整块白底，内容改用独立卡片承载。 */
+    .workspace-card { overflow: hidden auto; background: transparent; border-radius: 0; scrollbar-color: var(--border) transparent; scrollbar-width: thin; }
+    .workbench-root { width: min(100%, 1240px); min-height: 100%; margin: 0 auto; padding: 22px 24px 56px; color: var(--fg); }
+    .wb-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+    .wb-heading { min-width: 0; }
+    .wb-eyebrow { margin: 0 0 7px; color: var(--muted); font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+    .wb-title { margin: 0; color: var(--fg); font-family: var(--font-display); font-size: clamp(25px, 2.4vw, 34px); font-weight: 510; line-height: 1.12; letter-spacing: -.022em; }
+    .wb-subtitle { max-width: 60ch; margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .wb-header-actions, .wb-inline-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .wb-btn { display: inline-flex; min-height: 36px; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; color: var(--fg); background: color-mix(in oklch, var(--surface) 98%, var(--fg)); border: 1px solid var(--border); border-radius: 6px; font-size: 13px; font-weight: 510; transition: background .15s ease, border-color .15s ease, transform .05s ease; }
+    .wb-btn:hover { color: var(--fg); background: color-mix(in oklch, var(--surface) 92%, var(--fg)); border-color: color-mix(in oklch, var(--border) 48%, var(--fg)); }
+    .wb-btn:active { transform: translateY(1px); }
+    .wb-btn-primary { color: var(--surface); background: var(--accent); border-color: var(--accent); }
+    .wb-btn-primary:hover { color: var(--surface); background: color-mix(in oklch, var(--accent) 88%, var(--fg)); border-color: color-mix(in oklch, var(--accent) 88%, var(--fg)); }
+    .wb-route-nav { display: flex; gap: 4px; margin-top: 20px; padding: 4px; overflow-x: auto; background: color-mix(in oklch, var(--surface) 90%, var(--bg)); border: 1px solid var(--border); border-radius: 8px; scrollbar-width: none; }
+    .wb-route-nav::-webkit-scrollbar { display: none; }
+    .wb-route { min-height: 36px; flex: 0 0 auto; padding: 0 13px; color: var(--muted); background: transparent; border: 0; border-radius: 6px; font-size: 13px; font-weight: 510; }
+    .wb-route:hover { color: var(--fg); background: var(--surface); }
+    .wb-route.active { color: var(--fg); background: var(--surface); box-shadow: 0 0 0 1px var(--border); }
+    .wb-brief { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 18px; margin-top: 16px; padding: 20px 22px; color: var(--fg); background: var(--surface); border: 1px solid color-mix(in oklch, var(--border) 72%, var(--accent)); border-radius: 12px; }
+    .wb-brief-label { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; color: var(--fg); font-size: 12px; font-weight: 510; }
+    .wb-brief-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
+    .wb-brief p { max-width: 78ch; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .wb-brief .wb-btn { color: var(--fg); background: var(--surface); border-color: var(--border); }
+    .wb-brief .wb-btn:hover { color: var(--fg); background: var(--fg-soft); border-color: color-mix(in oklch, var(--border) 48%, var(--fg)); }
+    .wb-section { margin-top: 24px; }
+    .wb-section-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; }
+    .wb-section-title { margin: 0; color: var(--fg); font-family: var(--font-display); font-size: 16px; font-weight: 590; line-height: 1.35; letter-spacing: -.01em; }
+    .wb-section-meta { color: var(--muted); font-size: 12px; }
+    .wb-link { min-height: 32px; padding: 0 4px; color: var(--accent); background: transparent; border: 0; font-size: 12px; font-weight: 510; }
+    .wb-link:hover { color: color-mix(in oklch, var(--accent) 82%, var(--fg)); text-decoration: underline; text-underline-offset: 3px; }
+    .wb-kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .wb-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+    .wb-card-button { width: 100%; color: var(--fg); text-align: left; transition: background .16s ease, border-color .16s ease, transform .08s ease; }
+    .wb-card-button:hover { color: var(--fg); background: color-mix(in oklch, var(--surface) 96%, var(--accent)); border-color: color-mix(in oklch, var(--border) 62%, var(--accent)); }
+    .wb-card-button:active { transform: translateY(1px); }
+    .wb-card-button.is-active { background: color-mix(in oklch, var(--surface) 94%, var(--accent)); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent-soft); }
+    .wb-kpi { min-height: 108px; padding: 16px; }
+    .wb-kpi-label { color: var(--muted); font-size: 12px; }
+    .wb-kpi-value { margin-top: 8px; color: var(--fg); font-family: var(--font-mono); font-size: 26px; font-weight: 510; line-height: 1.05; letter-spacing: -.025em; }
+    .wb-kpi-meta { margin-top: 9px; color: var(--muted); font-size: 11px; }
+    .wb-split { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(260px, .78fr); gap: 10px; }
+    .wb-panel { padding: 16px; }
+    .wb-list { display: flex; flex-direction: column; gap: 8px; }
+    .wb-todo, .wb-object, .wb-analysis-row { display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 13px 14px; }
+    .wb-item-title { color: var(--fg); font-size: 13px; font-weight: 590; line-height: 1.45; }
+    .wb-item-copy { margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .wb-item-side { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+    .wb-tag { display: inline-flex; min-height: 22px; align-items: center; padding: 0 8px; color: var(--muted); background: var(--fg-soft); border: 1px solid var(--border); border-radius: 999px; font-size: 10px; font-weight: 510; white-space: nowrap; }
+    .wb-tag-accent { color: var(--accent); background: var(--accent-soft); border-color: color-mix(in oklch, var(--accent) 30%, var(--border)); }
+    .wb-deadline { color: var(--muted); font-family: var(--font-mono); font-size: 10px; white-space: nowrap; }
+    .wb-schedule-list { display: flex; flex-direction: column; }
+    .wb-schedule { display: grid; width: 100%; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; padding: 13px 0; color: var(--fg); background: transparent; border: 0; border-top: 1px solid var(--border); text-align: left; }
+    .wb-schedule:first-child { border-top: 0; }
+    .wb-schedule:hover { color: var(--fg); background: var(--fg-soft); }
+    .wb-time { color: var(--fg); font-family: var(--font-mono); font-size: 12px; font-weight: 590; }
+    .wb-action-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .wb-action { min-height: 82px; padding: 14px; }
+    .wb-action .fx-svg { width: 18px; height: 18px; color: var(--accent); }
+    .wb-action-title { margin-top: 13px; color: var(--fg); font-size: 13px; font-weight: 590; }
+    .wb-object-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .wb-object-column { padding: 16px; }
+    .wb-object-column .wb-section-head { margin-bottom: 10px; }
+    .wb-object-avatar { display: grid; width: 32px; height: 32px; place-items: center; color: var(--accent); background: var(--accent-soft); border-radius: 8px; font-size: 12px; font-weight: 590; }
+    .wb-object { grid-template-columns: 32px minmax(0, 1fr) auto; padding-inline: 12px; }
+    .wb-stage-flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; overflow: hidden; background: var(--border); border: 1px solid var(--border); border-radius: 8px; }
+    .wb-stage { min-height: 54px; padding: 10px 12px; color: var(--muted); background: var(--surface); font-size: 11px; }
+    .wb-stage.active { color: var(--fg); background: color-mix(in oklch, var(--surface) 92%, var(--accent)); }
+    .wb-stage strong { display: block; margin-bottom: 4px; color: inherit; font-size: 12px; }
+    .wb-check-list { display: flex; flex-direction: column; }
+    .wb-check { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; padding: 13px 0; border-top: 1px solid var(--border); }
+    .wb-check:first-child { border-top: 0; }
+    .wb-chart { display: flex; flex-direction: column; gap: 14px; padding: 18px; }
+    .wb-chart-row { display: grid; grid-template-columns: 90px minmax(0, 1fr) 44px; align-items: center; gap: 12px; color: var(--muted); font-size: 11px; }
+    .wb-chart-track { height: 8px; overflow: hidden; background: var(--fg-soft); border-radius: 999px; }
+    .wb-chart-fill { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+    .wb-task-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr); gap: 10px; }
+    .wb-empty { display: grid; min-height: 360px; padding: 32px; place-items: center; text-align: center; }
+    .wb-empty h2 { margin: 0 0 8px; font-size: 20px; }
+    .wb-empty p { max-width: 48ch; margin: 0; color: var(--muted); }
+    .wb-loading .wb-card, .wb-loading .wb-brief { opacity: .54; }
+
+    /* Agent 仅在卡片触发后进入上下文模式；默认欢迎页与原有组件保持不变。 */
+    .agent-header-title { margin-left: 2px; color: var(--fg); font-size: 13px; font-weight: 590; }
+    .agent-guidance.context-mode { padding: 18px 16px 148px; }
+    .agent-context-transcript { display: flex; flex-direction: column; gap: 15px; color: var(--fg); }
+    .agent-context-user { align-self: flex-end; width: min(92%, 336px); padding: 12px 14px; color: var(--fg); background: color-mix(in oklch, var(--surface) 88%, var(--bg)); border: 1px solid color-mix(in oklch, var(--border) 78%, var(--surface)); border-radius: 12px 12px 3px 12px; font-size: 13px; line-height: 1.65; }
+    .agent-context-process { display: inline-flex; min-height: 30px; align-self: flex-start; align-items: center; gap: 6px; padding: 0; color: var(--muted); background: transparent; border: 0; font-size: 11px; text-align: left; }
+    .agent-context-process:hover { color: var(--fg); }
+    .agent-context-process .fx-svg { width: 12px; height: 12px; transition: transform .16s ease; }
+    .agent-context-process[aria-expanded="true"] .fx-svg { transform: rotate(180deg); }
+    .agent-context-process-detail { margin-top: -9px; padding: 9px 11px; color: var(--muted); background: var(--fg-soft); border: 1px solid var(--border); border-radius: 7px; font-size: 11px; line-height: 1.55; }
+    .agent-context-answer { font-size: 13px; line-height: 1.7; }
+    .agent-context-answer > p { margin: 0; }
+    .agent-context-rule { height: 1px; margin: 16px 0; background: var(--border); border: 0; }
+    .agent-context-answer h2 { margin: 0 0 9px; color: var(--fg); font-size: 14px; font-weight: 590; line-height: 1.5; }
+    .agent-context-section + .agent-context-section { margin-top: 17px; }
+    .agent-context-answer ul { margin: 0; padding-left: 19px; color: var(--fg); }
+    .agent-context-answer li + li { margin-top: 7px; }
+    .agent-context-answer strong { font-weight: 590; }
+    .agent-context-answer .context-muted { color: var(--muted); }
+    .agent-context-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .agent-context-action { min-height: 34px; padding: 0 11px; color: var(--fg); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 12px; font-weight: 510; }
+    .agent-context-action:hover { color: var(--fg); background: var(--fg-soft); border-color: color-mix(in oklch, var(--border) 48%, var(--fg)); }
+    .agent-context-action.primary { color: var(--surface); background: var(--accent); border-color: var(--accent); }
+    .agent-context-action.primary:hover { color: var(--surface); background: color-mix(in oklch, var(--accent) 88%, var(--fg)); border-color: color-mix(in oklch, var(--accent) 88%, var(--fg)); }
+    .workbench-action-dialog { width: min(520px, calc(100vw - 32px)); }
+    .wb-dialog-copy { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .wb-dialog-context { margin-top: 14px; padding: 12px; color: var(--fg); background: var(--fg-soft); border: 1px solid var(--border); border-radius: 8px; font-size: 12px; line-height: 1.55; }
+
     @media (max-width: 1180px) {
       .global-search { width: 220px; }
       .top-tools .optional-tool { display: none; }
       .app-root.agent-open .workspace-column { margin-right: 0; }
+      .wb-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .wb-split, .wb-task-layout { grid-template-columns: 1fr; }
     }
     @media (max-width: 920px) {
       body { overflow: auto; }
@@ -610,6 +483,20 @@
       .agent-panel { width: min(100%, 375px); }
       .agent-icon-button { width: 44px; height: 44px; }
       .welcome-title { font-size: 20px; }
+      .workbench-root { padding: 16px 12px 40px; }
+      .wb-header { flex-direction: column; }
+      .wb-header-actions { width: 100%; }
+      .wb-header-actions .wb-btn { flex: 1; min-height: 44px; }
+      .wb-brief { grid-template-columns: 1fr; }
+      .wb-action-grid, .wb-object-grid { grid-template-columns: 1fr 1fr; }
+      .wb-card-button, .wb-route, .wb-schedule, .wb-link, .agent-context-action, .agent-context-process { min-height: 44px; }
+    }
+    @media (max-width: 600px) {
+      .wb-kpi-grid, .wb-action-grid, .wb-object-grid { grid-template-columns: 1fr; }
+      .wb-object { grid-template-columns: 32px minmax(0, 1fr); }
+      .wb-object .wb-item-side { grid-column: 2; align-items: flex-start; }
+      .wb-stage-flow { grid-template-columns: 1fr; }
+      .wb-title { font-size: 25px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -714,8 +601,7 @@
         </div>
         <nav class="crm-menu" aria-label="CRM 菜单">
           <ul class="crm-menu-list" id="crmMenuList">
-            <li><button class="crm-menu-item" type="button" data-menu="首页" data-od-id="crm-menu-home"><svg class="fx-svg menu-icon home" aria-hidden="true"><use href="#fx-home"></use></svg><span class="menu-text">首页</span></button></li>
-            <li><button class="crm-menu-item active" type="button" data-menu="销售工作台" data-od-id="crm-menu-sales-workbench"><svg class="fx-svg menu-icon dependency" aria-hidden="true"><use href="#fx-work"></use></svg><span class="menu-text">销售工作台</span></button></li>
+            <li><button class="crm-menu-item active" type="button" data-menu="首页" data-od-id="crm-menu-home"><svg class="fx-svg menu-icon home" aria-hidden="true"><use href="#fx-home"></use></svg><span class="menu-text">首页</span></button></li>
             <li><button class="crm-menu-item" type="button" data-menu="CRM待办" data-od-id="crm-menu-todo"><svg class="fx-svg menu-icon todo" aria-hidden="true"><use href="#fx-todo"></use></svg><span class="menu-text">CRM待办</span><span class="menu-count num">98</span></button></li>
             <li><button class="crm-menu-item" type="button" data-menu="CRM提醒" data-od-id="crm-menu-remind"><svg class="fx-svg menu-icon remind" aria-hidden="true"><use href="#fx-remind"></use></svg><span class="menu-text">CRM提醒</span></button></li>
             <li><button class="crm-menu-item" type="button" data-menu="研发管理驾驶舱" data-od-id="crm-menu-rd-cockpit"><svg class="fx-svg menu-icon flag" aria-hidden="true"><use href="#fx-flag"></use></svg><span class="menu-text">研发管理驾驶舱</span></button></li>
@@ -747,231 +633,17 @@
       </aside>
 
       <main class="workspace-column" data-od-id="workspace">
-        <div class="workspace-tabs" data-od-id="workspace-tabs"><span class="workspace-tab" id="activeTab">销售工作台</span></div>
-        <section class="workspace-card" id="workspaceCard" data-od-id="menu-content-container" aria-label="销售工作台内容承载区域">
-          <div class="workbench-root" id="workbenchRoot" data-od-id="sales-workbench">
-            <header class="wb-header" data-od-id="sales-workbench-header">
-              <div class="wb-title-group">
-                <h1 class="wb-title" id="workbenchTitle">销售工作台</h1>
-                <div class="wb-subtitle"><svg class="fx-svg" aria-hidden="true"><use href="#fx-work"></use></svg><span id="workbenchSubtitle">销售代表 · 当前优先事项</span></div>
-              </div>
-              <div class="wb-header-actions">
-                <button class="wb-btn wb-monitor-button" id="executionMonitorButton" type="button" aria-controls="executionMonitorPopover" aria-expanded="false" data-od-id="execution-monitor" hidden><span id="executionMonitorLabel">执行 0%</span></button>
-                <div class="wb-monitor-popover" id="executionMonitorPopover" role="dialog" aria-label="执行监视器" hidden>
-                  <div class="wb-monitor-title"><span>北辰科技商机跟进</span><span class="wb-tag wb-tag-info" id="monitorStateTag">执行中</span></div>
-                  <div class="wb-monitor-copy" id="monitorCopy">正在准备动作范围，离开当前页面后仍可从这里暂停或接管。</div>
-                  <div class="wb-progress-line"><div class="wb-progress-track"><div class="wb-progress-fill" id="monitorProgress" style="width:0%"></div></div><span class="wb-progress-text" id="monitorPercent">0%</span></div>
-                  <div class="wb-monitor-actions">
-                    <button class="wb-btn" id="pauseExecution" type="button">暂停</button>
-                    <button class="wb-btn" id="takeoverExecution" type="button">手动接管</button>
-                    <button class="wb-btn wb-btn-text" id="returnToExecution" type="button">返回活动</button>
-                  </div>
-                </div>
-              </div>
-            </header>
-
-            <div class="wb-recovery" id="recoveryBar" data-od-id="activity-recovery" hidden>
-              <span>已恢复“北辰科技商机跟进”的中央工作栈；Agent 未自动展开，作用域将在恢复时重新核验。</span>
-              <button class="wb-btn wb-btn-text" id="resumeAgentSession" type="button">恢复上次会话</button>
-            </div>
-            <div class="wb-live" id="workbenchLive" aria-live="polite"></div>
-            <div class="wb-live" id="workbenchAssertive" aria-live="assertive"></div>
-
-            <div class="wb-canvas" id="workbenchCanvas">
-              <!-- STATE: ST-01 -->
-              <section class="wb-view" id="roleView" data-view="role" data-od-id="role-orientation-view" aria-labelledby="roleViewTitle">
-                <div class="wb-role-summary">
-                  <div>
-                    <div class="wb-role-kicker"><svg class="fx-svg" aria-hidden="true"><use href="#fx-work"></use></svg><span>当前角色 · 销售代表</span><span class="wb-tag">原型验证数据</span></div>
-                    <h2 id="roleViewTitle">今天先推进北辰科技商机跟进</h2>
-                    <p>从角色队列进入活动后，目标、对象范围、当前步骤和返回位置会持续保留。</p>
-                  </div>
-                  <div class="wb-entry-actions">
-                    <button class="wb-btn" id="searchWorkbenchObject" type="button"><svg class="fx-svg" aria-hidden="true"><use href="#fx-search"></use></svg>搜索对象</button>
-                    <button class="wb-btn wb-btn-primary" id="startPriority" type="button" data-od-id="start-priority-action"><svg class="fx-svg" aria-hidden="true"><use href="#fx-arrow-right"></use></svg>开始优先事项</button>
-                  </div>
-                </div>
-
-                <div class="wb-home-grid">
-                  <section class="wb-card" data-od-id="priority-queue">
-                    <header class="wb-card-header"><h3 class="wb-card-title">今日优先事项</h3><span class="wb-card-meta">1 个待推进活动</span></header>
-                    <table class="wb-queue">
-                      <thead><tr><th style="width:48%">事项</th><th>工作类型</th><th>对象范围</th><th>状态</th></tr></thead>
-                      <tbody>
-                        <tr>
-                          <td><button class="wb-task-button" id="openNorthstarActivity" type="button" data-od-id="priority-northstar"><span class="wb-task-icon"><svg class="fx-svg" aria-hidden="true"><use href="#fx-work"></use></svg></span><span class="wb-task-copy"><span class="wb-task-name">北辰科技商机跟进</span><span class="wb-task-note">来源：销售工作台优先队列</span></span></button></td>
-                          <td>多步活动</td>
-                          <td>商机 / 客户 / 联系人</td>
-                          <td><span class="wb-tag wb-tag-warning">待核验证据</span></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </section>
-
-                  <div class="wb-side-stack">
-                    <section class="wb-card" data-od-id="schedule-card">
-                      <header class="wb-card-header"><h3 class="wb-card-title">今日日程</h3><span class="wb-card-meta">未接入</span></header>
-                      <div class="wb-empty-mini">本验证切片未连接真实日程数据</div>
-                    </section>
-                    <section class="wb-card" data-od-id="activity-monitor-card">
-                      <header class="wb-card-header"><h3 class="wb-card-title">未完成活动</h3><span class="wb-tag wb-tag-success">可恢复</span></header>
-                      <ul class="wb-compact-list">
-                        <li class="wb-compact-row"><span class="wb-time">当前</span><div><div class="wb-compact-title">北辰科技商机跟进</div><div class="wb-compact-note">尚未建立执行任务，不会产生后台孤儿任务</div></div></li>
-                      </ul>
-                    </section>
-                  </div>
-                </div>
-              </section>
-
-              <section class="wb-view" id="sceneView" data-view="scene" data-od-id="scene-activity-view" hidden>
-                <div class="wb-context-bar" data-od-id="scene-context-bar">
-                  <div class="wb-breadcrumb"><button id="backToRole" type="button">销售工作台</button><span>/</span><strong>北辰科技商机跟进</strong></div>
-                  <div class="wb-context-actions"><span class="wb-tag wb-tag-info">活动进行中</span><button class="wb-btn" id="openSceneAgent" type="button"><svg class="fx-svg" aria-hidden="true"><use href="#fx-agent"></use></svg>打开 Agent</button></div>
-                </div>
-                <div class="wb-scene-overview">
-                  <section class="wb-card wb-goal">
-                    <div class="wb-goal-label">活动目标</div>
-                    <h2>核对商机、客户与联系人证据，形成可执行的下一步计划</h2>
-                    <div class="wb-progress-line"><div class="wb-progress-track"><div class="wb-progress-fill"></div></div><span class="wb-progress-text">当前步骤：核验证据</span></div>
-                  </section>
-                  <section class="wb-card wb-scope-card" data-od-id="scene-scope-card">
-                    <div class="wb-scope-row"><span class="wb-scope-label">页面工作范围</span><span class="wb-scope-value" id="workingScopeValue">12 个商机</span></div>
-                    <div class="wb-scope-row"><span class="wb-scope-label">Agent 已采用</span><span class="wb-scope-value" id="committedScopeValue">12 个商机</span></div>
-                    <div class="wb-scope-row"><span class="wb-scope-label">数据新鲜度</span><span class="wb-scope-value">原型数据 · 本次会话</span></div>
-                  </section>
-                </div>
-                <div class="wb-scope-diff" id="scopeDiffBar" data-od-id="scope-difference" hidden>
-                  <div><strong>范围尚未提交：</strong><span id="scopeDiffCopy">页面已从 12 个调整为 9 个，Agent 仍使用旧快照。</span></div>
-                  <div class="wb-scope-diff-actions">
-                    <button class="wb-btn" id="restoreScope" type="button">恢复旧选择</button>
-                    <button class="wb-btn" id="rebaseScope" type="button">比较后重算</button>
-                    <button class="wb-btn wb-btn-primary" id="commitScope" type="button">应用到 Agent</button>
-                  </div>
-                </div>
-                <div class="wb-object-grid">
-                  <section class="wb-card" data-od-id="activity-object-list">
-                    <header class="wb-card-header"><h3 class="wb-card-title">活动对象</h3><button class="wb-btn wb-btn-text" id="excludeMissingEvidence" type="button">排除 3 个缺证据商机</button></header>
-                    <ul class="wb-object-list" id="activityObjectList">
-                      <li><button class="wb-object-row" type="button" data-object="opportunity"><span class="wb-object-icon"><svg class="fx-svg" aria-hidden="true"><use href="#fx-work"></use></svg></span><span><span class="wb-object-name">北辰科技商机</span><span class="wb-object-kind">商机 · 当前焦点候选</span></span><span class="wb-tag wb-tag-warning">待核验</span></button></li>
-                      <li><button class="wb-object-row" type="button" data-object="account"><span class="wb-object-icon"><svg class="fx-svg" aria-hidden="true"><use href="#fx-crm"></use></svg></span><span><span class="wb-object-name">北辰科技</span><span class="wb-object-kind">客户 · 关联事实</span></span><span class="wb-tag">只读</span></button></li>
-                      <li><button class="wb-object-row" type="button" data-object="contact"><span class="wb-object-icon"><svg class="fx-svg" aria-hidden="true"><use href="#fx-contacts"></use></svg></span><span><span class="wb-object-name">关键联系人待确认</span><span class="wb-object-kind">联系人 · 证据缺失</span></span><span class="wb-tag wb-tag-warning">待补充</span></button></li>
-                    </ul>
-                  </section>
-                  <section class="wb-card wb-peek" id="objectPeek" data-od-id="object-peek">
-                    <div class="wb-peek-empty" id="peekEmpty"><div><svg class="fx-svg" style="width:24px;height:24px;margin:0 auto 8px" aria-hidden="true"><use href="#fx-search"></use></svg><div>单击对象进行轻览</div><div class="wb-card-meta">列表位置、筛选和选择会被保留</div></div></div>
-                    <div id="peekContent" hidden>
-                      <div class="row-between"><h3 id="peekTitle">北辰科技商机</h3><span class="wb-tag wb-tag-warning">待核验</span></div>
-                      <dl class="wb-fact-grid" id="peekFacts"></dl>
-                      <div class="wb-peek-actions"><button class="wb-btn" id="returnFromPeek" type="button">取消轻览</button><button class="wb-btn wb-btn-primary" id="openObjectFocus" type="button">打开处理</button></div>
-                    </div>
-                  </section>
-                </div>
-              </section>
-
-              <section class="wb-view" id="focusView" data-view="focus" data-od-id="object-focus-view" hidden>
-                <div class="wb-context-bar">
-                  <div class="wb-breadcrumb"><button id="backToScene" type="button">销售工作台</button><span>/</span><button id="backToSceneObjects" type="button">北辰科技商机跟进</button><span>/</span><strong>北辰科技商机</strong></div>
-                  <div class="wb-context-actions"><span class="wb-tag wb-tag-warning">证据待核验</span><button class="wb-btn" id="openFocusAgent" type="button"><svg class="fx-svg" aria-hidden="true"><use href="#fx-agent"></use></svg>打开 Agent</button></div>
-                </div>
-                <div class="wb-focus-grid">
-                  <section class="wb-card wb-focus-main">
-                    <nav class="wb-tabs" aria-label="对象信息标签页">
-                      <button class="wb-tab active" type="button" data-focus-tab="facts">关键事实</button>
-                      <button class="wb-tab" type="button" data-focus-tab="timeline">时间线</button>
-                      <button class="wb-tab" type="button" data-focus-tab="relations">关系</button>
-                      <button class="wb-tab" type="button" data-focus-tab="actions">动作</button>
-                    </nav>
-                    <div class="wb-tab-panel" id="focusTabPanel">
-                      <h2 class="wb-section-title">可核对事实</h2>
-                      <p class="wb-section-note">以下仅使用当前对象和已绑定来源，不把 Agent 推断写成业务事实。</p>
-                      <dl class="wb-fact-grid">
-                        <div class="wb-fact"><dt>对象</dt><dd>北辰科技商机</dd></div>
-                        <div class="wb-fact"><dt>当前步骤</dt><dd>核验证据</dd></div>
-                        <div class="wb-fact"><dt>下一步</dt><dd>尚未落账</dd></div>
-                        <div class="wb-fact"><dt>关键联系人</dt><dd>待补充</dd></div>
-                      </dl>
-                      <ul class="wb-evidence-list">
-                        <li class="wb-evidence-item"><svg class="fx-svg" aria-hidden="true"><use href="#fx-crm"></use></svg><div><div class="wb-evidence-title">商机对象字段</div><div class="wb-evidence-note">事实来源 · 当前对象版本</div></div><button class="wb-source-link" type="button" data-evidence="opportunity">定位字段</button></li>
-                        <li class="wb-evidence-item"><svg class="fx-svg" aria-hidden="true"><use href="#fx-draftbox"></use></svg><div><div class="wb-evidence-title">最近跟进记录</div><div class="wb-evidence-note">事实来源 · 存在一条待核验记录</div></div><button class="wb-source-link" type="button" data-evidence="record">查看记录</button></li>
-                        <li class="wb-evidence-item"><svg class="fx-svg" aria-hidden="true"><use href="#fx-contacts"></use></svg><div><div class="wb-evidence-title">联系人关系</div><div class="wb-evidence-note">证据缺失 · 未确认关键联系人</div></div><button class="wb-source-link" type="button" data-evidence="contact">补充上下文</button></li>
-                      </ul>
-                    </div>
-                  </section>
-                  <aside class="wb-card wb-next-step" data-od-id="object-next-step">
-                    <h3>下一步建议</h3>
-                    <p>根据现有证据，可能需要先确认关键联系人，再形成客户沟通草稿。</p>
-                    <span class="wb-card-meta">AI 推断 · 尚未落账 · 缺少联系人证据</span>
-                    <div class="wb-focus-actions"><button class="wb-btn" id="openEvidenceView" type="button">打开证据视图</button><button class="wb-btn wb-btn-primary" id="generateNextStep" type="button">交给 Agent 形成提案</button></div>
-                  </aside>
-                </div>
-              </section>
-
-              <section class="wb-view" id="evidenceView" data-view="evidence" data-od-id="bound-work-view" hidden>
-                <div class="wb-context-bar">
-                  <div class="wb-breadcrumb"><button id="backToFocus" type="button">北辰科技商机</button><span>/</span><strong>绑定证据与动作差异</strong></div>
-                  <div class="wb-context-actions"><span class="wb-tag wb-tag-warning">中风险 · 需确认</span><button class="wb-btn" id="closeEvidenceView" type="button">返回对象</button></div>
-                </div>
-                <div class="wb-v1-grid">
-                  <section class="wb-card wb-table-shell">
-                    <header class="wb-card-header"><h3 class="wb-card-title">唯一可执行工作视图</h3><span class="wb-card-meta">只冻结受影响依赖</span></header>
-                    <table class="wb-diff-table">
-                      <thead><tr><th>证据</th><th>当前事实</th><th>Agent 提案</th><th>来源与新鲜度</th></tr></thead>
-                      <tbody>
-                        <tr><td>商机下一步</td><td>尚未填写</td><td>确认关键联系人</td><td><button class="wb-source-link" type="button" data-evidence="opportunity">商机对象字段</button><br><span class="wb-card-meta">当前对象版本</span></td></tr>
-                        <tr><td>最近跟进</td><td>有一条记录待核验</td><td>核验后再生成沟通草稿</td><td><button class="wb-source-link" type="button" data-evidence="record">最近跟进记录</button><br><span class="wb-card-meta">本次会话</span></td></tr>
-                        <tr><td>关键联系人</td><td>证据缺失</td><td>不自动外发；先补充联系人</td><td><button class="wb-source-link" type="button" data-evidence="contact">联系人关系</button><br><span class="wb-card-meta">待补充</span></td></tr>
-                      </tbody>
-                    </table>
-                  </section>
-                  <aside class="wb-v1-side">
-                    <section class="wb-card"><h3>绑定作用域</h3><p>销售代表 / 北辰科技商机跟进 / 北辰科技商机</p><div class="wb-alert wb-alert-warning" style="margin-top:10px"><svg class="fx-svg" aria-hidden="true"><use href="#fx-remind"></use></svg><span>联系人证据缺失，外部沟通只能生成草稿。</span></div></section>
-                    <section class="wb-card"><h3>动作边界</h3><p>更新内部下一步计划并创建待办；不发送客户消息。</p><div class="wb-focus-actions"><button class="wb-btn wb-btn-primary" id="openActionPreview" type="button">进入动作预览</button></div></section>
-                  </aside>
-                </div>
-              </section>
-
-              <!-- STATE: ST-02 -->
-              <!-- STATE: ST-03 -->
-              <!-- STATE: ST-04 -->
-              <!-- STATE: ST-05 -->
-              <!-- STATE: ST-06 -->
-              <!-- STATE: ST-07 -->
-              <!-- STATE: ST-08 -->
-              <!-- STATE: ST-09 -->
-              <!-- STATE: ST-10 -->
-              <!-- STATE: ST-11 -->
-              <!-- STATE: ST-12 -->
-              <section class="wb-view wb-state-panel" id="stateView" data-view="state" data-od-id="state-validation-view" hidden>
-                <div class="wb-card wb-state-card" id="stateCard"></div>
-              </section>
-
-              <section class="wb-view wb-state-panel" id="receiptView" data-view="receipt" data-od-id="execution-receipt-view" hidden>
-                <div class="wb-card wb-state-card">
-                  <div class="wb-state-icon" style="color:var(--color-success06);background:color-mix(in srgb,var(--color-success06) 9%,#fff)"><svg class="fx-svg" aria-hidden="true"><use href="#fx-todo"></use></svg></div>
-                  <h2 id="receiptTitle">动作已完成并按顺序回写</h2>
-                  <p id="receiptCopy">对象事实已落账，活动步骤和角色队列已同步更新。</p>
-                  <ul class="wb-receipt-list" id="receiptList">
-                    <li class="wb-receipt-row"><svg class="fx-svg" aria-hidden="true"><use href="#fx-todo"></use></svg><span>北辰科技商机 · 下一步已更新</span><span class="wb-tag wb-tag-success">成功</span></li>
-                    <li class="wb-receipt-row"><svg class="fx-svg" aria-hidden="true"><use href="#fx-todo"></use></svg><span>北辰科技商机跟进 · 当前步骤已推进</span><span class="wb-tag wb-tag-success">成功</span></li>
-                    <li class="wb-receipt-row"><svg class="fx-svg" aria-hidden="true"><use href="#fx-todo"></use></svg><span>销售工作台 · 队列投影已刷新</span><span class="wb-tag wb-tag-success">成功</span></li>
-                  </ul>
-                  <div class="wb-state-actions"><button class="wb-btn" id="returnToObjectAfterReceipt" type="button">返回对象</button><button class="wb-btn wb-btn-primary" id="finishActivity" type="button">回到销售工作台</button></div>
-                </div>
-              </section>
-            </div>
-          </div>
-          <div class="blank-menu-host" id="blankMenuHost" hidden aria-hidden="true"></div>
-        </section>
+        <div class="workspace-tabs" data-od-id="workspace-tabs"><span class="workspace-tab" id="activeTab">首页</span></div>
+        <section class="workspace-card" id="workspaceCard" data-od-id="menu-content-container" aria-label="首页菜单内容承载区域"></section>
       </main>
     </div>
 
-    <aside class="agent-panel" id="agentPanel" aria-label="销售 Agent 侧边栏" aria-hidden="true" data-od-id="agent-panel" inert>
-      <div class="agent-resizer" id="agentResizer" role="separator" aria-label="调整 Agent 侧边栏宽度" aria-orientation="vertical" tabindex="0" data-od-id="agent-resizer"></div>
+    <aside class="agent-panel" id="agentPanel" aria-label="Agent 侧边栏" aria-hidden="true" data-od-id="agent-panel" inert>
       <header class="agent-header" data-od-id="agent-header">
         <div class="agent-header-group">
           <button class="agent-icon-button" id="agentMenu" type="button" title="会话记录" aria-label="会话记录" aria-controls="sessionDrawer" aria-expanded="false" data-od-id="agent-session-menu"><svg class="fx-svg" aria-hidden="true"><use href="#fx-panel-menu"></use></svg></button>
           <button class="agent-icon-button" id="newConversation" type="button" title="新建会话" aria-label="新建会话" data-od-id="agent-new-conversation"><svg class="fx-svg" aria-hidden="true"><use href="#fx-new-chat"></use></svg></button>
-          <span class="agent-panel-title" id="agentPanelTitle" tabindex="-1">销售 Agent</span>
+          <span class="agent-header-title" id="agentContextTitle" data-od-id="agent-panel-title" hidden>AI 协作区</span>
         </div>
         <div class="agent-header-group">
           <button class="agent-icon-button" id="popoutAgent" type="button" title="小窗展示" aria-label="小窗展示" aria-pressed="false" data-od-id="agent-popout">
@@ -988,7 +660,7 @@
         </aside>
 
         <div class="agent-guidance" id="agentGuidance" data-od-id="agent-guidance">
-          <section class="agent-workbench-context" id="agentWorkbenchContext" aria-label="当前工作上下文" data-od-id="agent-workbench-context" hidden></section>
+          <section class="agent-context-transcript" id="agentWorkbenchContext" aria-label="当前业务上下文对话" data-od-id="agent-context-transcript" hidden></section>
           <div class="agent-hero" id="agentHero">
             <div class="robot" aria-hidden="true">
               <img src="data:image/png;base64,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" alt="" />
@@ -1072,40 +744,19 @@
     </form>
   </div>
 
-  <div class="dialog-backdrop" id="actionPreviewDialog" data-od-id="action-preview-dialog" hidden>
-    <section class="fx-dialog-shell workbench-dialog" role="dialog" aria-modal="true" aria-labelledby="actionPreviewTitle">
+  <div class="dialog-backdrop" id="workbenchActionDialog" data-od-id="workbench-action-dialog" hidden>
+    <section class="fx-dialog-shell workbench-action-dialog" role="dialog" aria-modal="true" aria-labelledby="workbenchActionTitle">
       <div class="fx-dialog-header">
-        <h2 id="actionPreviewTitle">动作预览</h2>
-        <button class="fx-dialog-close" id="closeActionPreview" type="button" aria-label="关闭动作预览"><svg class="fx-svg" aria-hidden="true"><use href="#fx-close"></use></svg></button>
+        <h2 id="workbenchActionTitle">快速操作</h2>
+        <button class="fx-dialog-close" id="closeWorkbenchAction" type="button" aria-label="关闭快速操作"><svg class="fx-svg" aria-hidden="true"><use href="#fx-close"></use></svg></button>
       </div>
       <div class="fx-dialog-body">
-        <div class="wb-preview-summary">
-          <div class="wb-preview-box"><span>目标对象</span><strong>北辰科技商机</strong></div>
-          <div class="wb-preview-box"><span>风险等级</span><strong>中风险</strong></div>
-          <div class="wb-preview-box"><span>外部影响</span><strong>不会外发</strong></div>
-        </div>
-        <div class="wb-alert wb-alert-warning" style="margin-top:12px"><svg class="fx-svg" aria-hidden="true"><use href="#fx-remind"></use></svg><span>联系人证据仍缺失。本次只更新内部下一步计划并创建内部待办，不发送客户消息。</span></div>
-        <table class="wb-diff-table" style="min-width:0;margin-top:12px">
-          <thead><tr><th>变更项</th><th>变更前</th><th>变更后</th></tr></thead>
-          <tbody><tr><td>商机下一步</td><td>尚未填写</td><td>确认关键联系人</td></tr><tr><td>内部待办</td><td>未创建</td><td>创建“补充联系人证据”</td></tr></tbody>
-        </table>
-        <label class="wb-checkbox" style="margin-top:14px"><input id="confirmEvidence" type="checkbox" /><span>我已核对以上来源、作用域与动作差异</span></label>
+        <p class="wb-dialog-copy" id="workbenchActionCopy"></p>
+        <div class="wb-dialog-context" id="workbenchActionContext"></div>
       </div>
       <div class="fx-dialog-footer">
-        <button class="fx-btn" id="cancelActionPreview" type="button">取消</button>
-        <button class="fx-btn fx-btn-primary" id="approveAction" type="button" disabled data-od-id="approve-action">确认并执行</button>
-      </div>
-    </section>
-  </div>
-
-  <div class="dialog-backdrop" id="switchGuardDialog" data-od-id="execution-switch-guard" hidden>
-    <section class="fx-dialog-shell workbench-dialog" role="dialog" aria-modal="true" aria-labelledby="switchGuardTitle">
-      <div class="fx-dialog-header"><h2 id="switchGuardTitle">执行仍在进行</h2></div>
-      <div class="fx-dialog-body"><p style="margin:0;color:var(--color-neutrals13);font-size:13px">切换菜单不会自动取消任务。请选择让任务在后台继续，或暂停后再离开。</p></div>
-      <div class="fx-dialog-footer">
-        <button class="fx-btn" id="cancelMenuSwitch" type="button">留在当前页</button>
-        <button class="fx-btn" id="pauseAndSwitch" type="button">暂停后切换</button>
-        <button class="fx-btn fx-btn-primary" id="continueAndSwitch" type="button">后台继续</button>
+        <button class="fx-btn" id="cancelWorkbenchAction" type="button">取消</button>
+        <button class="fx-btn fx-btn-primary" id="confirmWorkbenchAction" type="button" data-od-id="confirm-workbench-action">生成草稿</button>
       </div>
     </section>
   </div>
@@ -1114,10 +765,11 @@
     (() => {
       const STORAGE_KEY = "fx-crm-prototype-state-v1";
       const EXPORT_SCHEMA = "fxiaoke-crm-prototype";
-      const STATE_VERSION = 2;
+      const STATE_VERSION = 1;
       const DEFAULT_MODEL = "Deepseek-V4-Flash";
       const ALLOWED_MODELS = ["Deepseek-V4-Flash", "通用智能模型"];
       const ALLOWED_ICONS = ["home", "todo", "flag", "dependency"];
+      const ALLOWED_WORKBENCH_VIEWS = ["home", "customers", "opportunities", "analytics", "tasks", "empty"];
 
       const appRoot = document.getElementById("appRoot");
       const panel = document.getElementById("agentPanel");
@@ -1143,6 +795,8 @@
       const agentVoice = document.getElementById("agentVoice");
       const activeTab = document.getElementById("activeTab");
       const workspaceCard = document.getElementById("workspaceCard");
+      const agentContextTitle = document.getElementById("agentContextTitle");
+      const agentWorkbenchContext = document.getElementById("agentWorkbenchContext");
       const crmMenuList = document.getElementById("crmMenuList");
       const crmSearch = document.getElementById("crmSearch");
       const addMenu = document.getElementById("addMenu");
@@ -1158,46 +812,18 @@
       const importDataButton = document.getElementById("importData");
       const importDataFile = document.getElementById("importDataFile");
       const downloadHtmlButton = document.getElementById("downloadHtml");
+      const workbenchActionDialog = document.getElementById("workbenchActionDialog");
+      const workbenchActionTitle = document.getElementById("workbenchActionTitle");
+      const workbenchActionCopy = document.getElementById("workbenchActionCopy");
+      const workbenchActionContext = document.getElementById("workbenchActionContext");
+      const closeWorkbenchActionButton = document.getElementById("closeWorkbenchAction");
+      const cancelWorkbenchAction = document.getElementById("cancelWorkbenchAction");
+      const confirmWorkbenchAction = document.getElementById("confirmWorkbenchAction");
       const toast = document.getElementById("toast");
-      const agentResizer = document.getElementById("agentResizer");
-      const agentPanelTitle = document.getElementById("agentPanelTitle");
-      const agentWorkbenchContext = document.getElementById("agentWorkbenchContext");
-      const workbenchRoot = document.getElementById("workbenchRoot");
-      const blankMenuHost = document.getElementById("blankMenuHost");
-      const workbenchLive = document.getElementById("workbenchLive");
-      const recoveryBar = document.getElementById("recoveryBar");
-      const roleView = document.getElementById("roleView");
-      const sceneView = document.getElementById("sceneView");
-      const focusView = document.getElementById("focusView");
-      const evidenceView = document.getElementById("evidenceView");
-      const stateView = document.getElementById("stateView");
-      const receiptView = document.getElementById("receiptView");
-      const activityObjectList = document.getElementById("activityObjectList");
-      const objectPeek = document.getElementById("objectPeek");
-      const peekEmpty = document.getElementById("peekEmpty");
-      const peekContent = document.getElementById("peekContent");
-      const peekTitle = document.getElementById("peekTitle");
-      const peekFacts = document.getElementById("peekFacts");
-      const workingScopeValue = document.getElementById("workingScopeValue");
-      const committedScopeValue = document.getElementById("committedScopeValue");
-      const scopeDiffBar = document.getElementById("scopeDiffBar");
-      const scopeDiffCopy = document.getElementById("scopeDiffCopy");
-      const actionPreviewDialog = document.getElementById("actionPreviewDialog");
-      const confirmEvidence = document.getElementById("confirmEvidence");
-      const approveAction = document.getElementById("approveAction");
-      const switchGuardDialog = document.getElementById("switchGuardDialog");
-      const executionMonitorButton = document.getElementById("executionMonitorButton");
-      const executionMonitorPopover = document.getElementById("executionMonitorPopover");
-      const executionMonitorLabel = document.getElementById("executionMonitorLabel");
-      const monitorProgress = document.getElementById("monitorProgress");
-      const monitorPercent = document.getElementById("monitorPercent");
-      const monitorStateTag = document.getElementById("monitorStateTag");
-      const pauseExecutionButton = document.getElementById("pauseExecution");
       let toastTimer;
       let dialogReturnFocus = null;
-      let agentReturnFocus = null;
-      let pendingMenuName = null;
-      let executionTimer = null;
+      let activeAgentContextId = null;
+      let pendingWorkbenchAction = null;
 
       function createId(prefix) {
         const id = window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2);
@@ -1217,23 +843,14 @@
         return {
           version: STATE_VERSION,
           customMenus: [],
-          activeMenu: "销售工作台",
+          activeMenu: "首页",
+          workbench: { view: "home" },
           agent: {
             model: DEFAULT_MODEL,
             activeSessionId: null,
             sessions: [],
             panelOpen: false,
-            floating: false,
-            panelWidth: 375
-          },
-          workbench: {
-            view: "role",
-            checkpointView: "role",
-            selectedObject: null,
-            focusTab: "facts",
-            workingScope: 12,
-            committedScope: 12,
-            execution: { running: false, paused: false, progress: 0 }
+            floating: false
           }
         };
       }
@@ -1259,13 +876,13 @@
             });
           });
         }
-        const sourceVersion = Number(source.version) || 1;
-        clean.activeMenu = sourceVersion < 2 ? "销售工作台" : (safeString(source.activeMenu, 40) || "销售工作台");
+        clean.activeMenu = safeString(source.activeMenu, 40) || "首页";
+        const rawWorkbench = source.workbench && typeof source.workbench === "object" ? source.workbench : {};
+        clean.workbench.view = ALLOWED_WORKBENCH_VIEWS.includes(rawWorkbench.view) ? rawWorkbench.view : "home";
         const rawAgent = source.agent && typeof source.agent === "object" ? source.agent : {};
         clean.agent.model = ALLOWED_MODELS.includes(rawAgent.model) ? rawAgent.model : DEFAULT_MODEL;
         clean.agent.panelOpen = Boolean(rawAgent.panelOpen);
-        clean.agent.floating = false;
-        clean.agent.panelWidth = Math.min(520, Math.max(320, Number(rawAgent.panelWidth) || 375));
+        clean.agent.floating = Boolean(rawAgent.floating);
         if (Array.isArray(rawAgent.sessions)) {
           rawAgent.sessions.slice(0, 50).forEach((item) => {
             if (!item || typeof item !== "object") return;
@@ -1288,20 +905,6 @@
         }
         const requestedSession = safeString(rawAgent.activeSessionId, 72);
         clean.agent.activeSessionId = clean.agent.sessions.some((session) => session.id === requestedSession) ? requestedSession : null;
-        const rawWorkbench = source.workbench && typeof source.workbench === "object" ? source.workbench : {};
-        const allowedViews = ["role", "scene", "focus", "evidence", "receipt"];
-        const requestedView = safeString(rawWorkbench.view, 16);
-        const requestedCheckpoint = safeString(rawWorkbench.checkpointView, 16);
-        clean.workbench.view = allowedViews.includes(requestedView) ? requestedView : "role";
-        clean.workbench.checkpointView = allowedViews.includes(requestedCheckpoint) ? requestedCheckpoint : clean.workbench.view;
-        clean.workbench.selectedObject = ["opportunity", "account", "contact"].includes(rawWorkbench.selectedObject) ? rawWorkbench.selectedObject : null;
-        clean.workbench.focusTab = ["facts", "timeline", "relations", "actions"].includes(rawWorkbench.focusTab) ? rawWorkbench.focusTab : "facts";
-        clean.workbench.workingScope = Number(rawWorkbench.workingScope) === 9 ? 9 : 12;
-        clean.workbench.committedScope = Number(rawWorkbench.committedScope) === 9 ? 9 : 12;
-        const rawExecution = rawWorkbench.execution && typeof rawWorkbench.execution === "object" ? rawWorkbench.execution : {};
-        clean.workbench.execution.progress = Math.min(100, Math.max(0, Number(rawExecution.progress) || 0));
-        clean.workbench.execution.running = Boolean(rawExecution.running) && clean.workbench.execution.progress < 100;
-        clean.workbench.execution.paused = Boolean(rawExecution.paused);
         return clean;
       }
 
@@ -1362,135 +965,477 @@
         });
       }
 
-      const objectData = {
-        opportunity: {
-          title: "北辰科技商机",
-          tag: "待核验",
-          facts: [["对象类型", "商机"], ["当前步骤", "核验证据"], ["下一步", "尚未落账"], ["关联客户", "北辰科技"]]
+      const WORKBENCH_MENU_ROUTES = {
+        "首页": "home",
+        "CRM待办": "tasks",
+        "数据驾驶舱": "analytics",
+        "数据分析": "analytics",
+        "客户及商机管理": "customers",
+        "售前项目管理": "opportunities",
+        "标讯通": "home"
+      };
+
+      const WORKBENCH_ROUTE_MENUS = {
+        home: "首页",
+        customers: "客户及商机管理",
+        opportunities: "售前项目管理",
+        analytics: "数据驾驶舱",
+        tasks: "CRM待办"
+      };
+
+      const WORKBENCH_CONTEXTS = {
+        "brief-today": {
+          prompt: "请结合今天的客户、商机和标讯数据，告诉我最该先做什么，并给出可执行顺序。",
+          intro: "结合当前工作台的待办时效、商机风险和客户关系覆盖，我建议今天按“先止损、再补位、后承接”的顺序推进。",
+          sections: [
+            { title: "优先级判断", items: [
+              { label: "第一优先", text: "华北政企云项目已停滞 18 天，且关联标讯 3 天后截止；今天先确认技术负责人和方案边界。" },
+              { label: "第二优先", text: "华东能源集团关键决策人覆盖不足，补齐关系人后再安排经营回访。" },
+              { label: "第三优先", text: "华南数据中心扩容标讯已匹配 2 个客户，今天完成归属与承接意愿确认。" }
+            ]},
+            { title: "预计投入", items: [
+              { label: "总时长", text: "约 2 小时；先预留 45 分钟处理高风险商机，再分别安排 35 分钟和 40 分钟完成客户补位与标讯确认。" }
+            ]}
+          ],
+          actions: [
+            { label: "查看今日任务", route: "tasks", primary: true },
+            { label: "进入商机工作台", route: "opportunities" }
+          ]
         },
-        account: {
-          title: "北辰科技",
-          tag: "只读",
-          facts: [["对象类型", "客户"], ["关联活动", "北辰科技商机跟进"], ["关联商机", "北辰科技商机"], ["数据用途", "关联事实"]]
+        "kpi-target": {
+          prompt: "解释本月目标完成 68% 的含义，并告诉我今天应通过哪些动作补足。",
+          intro: "本月目标完成度较上月提升 8%，但距离月度目标仍有 32% 缺口。当前最有效的补足路径不是新增大量低质量线索，而是加速高金额、临近关键节点的商机。",
+          sections: [
+            { title: "关键判断", items: [
+              { label: "进展", text: "目标完成趋势向上，说明已有推进动作有效。" },
+              { label: "缺口", text: "重点商机中仍有 3 个阶段停滞，若本周不恢复推进，将直接影响预测兑现。" }
+            ]},
+            { title: "今天的补足动作", items: [
+              { label: "动作一", text: "完成华北政企云项目的技术边界确认。" },
+              { label: "动作二", text: "从 4 条新增标讯中确认 1 条可承接机会并建立责任人。" }
+            ]}
+          ],
+          actions: [{ label: "查看经营分析", route: "analytics", primary: true }]
         },
-        contact: {
-          title: "关键联系人待确认",
-          tag: "待补充",
-          facts: [["对象类型", "联系人"], ["当前状态", "证据缺失"], ["关联客户", "北辰科技"], ["允许动作", "补充上下文"]]
+        "kpi-opportunity": {
+          prompt: "帮我分析当前 1,280 万重点商机，指出最需要介入的项目。",
+          intro: "当前 12 个推进中商机合计 1,280 万元，其中华北政企云项目同时具备金额高、阶段停滞和标讯临期三项风险，是最需要立即介入的项目。",
+          sections: [
+            { title: "需要介入的信号", items: [
+              { label: "阶段", text: "需求确认阶段停留 18 天，显著高于同类商机。" },
+              { label: "关系", text: "技术负责人尚未覆盖，方案边界无法闭环。" },
+              { label: "时效", text: "关联标讯 3 天后截止，剩余协调窗口有限。" }
+            ]}
+          ],
+          actions: [
+            { label: "打开商机", route: "opportunities", primary: true },
+            { label: "创建推进任务", action: "create-task" }
+          ]
+        },
+        "kpi-customer": {
+          prompt: "重点客户覆盖率是 82%，请找出当前关系缺口并给出补位建议。",
+          intro: "当前重点客户整体覆盖率为 82%，主要缺口集中在华东能源集团的关键决策层和华北政务云的技术影响层。",
+          sections: [
+            { title: "关系缺口", items: [
+              { label: "华东能源集团", text: "关键决策人覆盖不足，最近一次有效互动距今 21 天。" },
+              { label: "华北政务云", text: "业务关系健康，但技术负责人尚未进入稳定沟通链路。" }
+            ]},
+            { title: "补位建议", items: [
+              { label: "本周", text: "由现有业务联系人引荐关键决策人，并用扩容情报作为经营议题。" }
+            ]}
+          ],
+          actions: [{ label: "查看客户工作台", route: "customers", primary: true }]
+        },
+        "kpi-tender": {
+          prompt: "今天新增的标讯里，哪一条最值得跟进？",
+          intro: "华南数据中心扩容标讯最值得优先跟进：当前已匹配 2 个存量客户，项目预算约 220 万元，且 3 天后截止。",
+          sections: [
+            { title: "推荐依据", items: [
+              { label: "匹配度", text: "已有客户关系基础，信息核验成本较低。" },
+              { label: "时效性", text: "截止时间临近，今天确认归属可避免错过承接窗口。" },
+              { label: "下一步", text: "确认客户归属、承接意愿和售前资源后再完成认领。" }
+            ]}
+          ],
+          actions: [{ label: "开始认领", action: "claim-tender", primary: true }]
+        },
+        "opp-huabei": {
+          prompt: "请梳理华北政企云项目当前风险、关联标讯和下一步行动，给出可执行的推进建议。",
+          intro: "华北政企云项目当前处于高风险状态。核心问题不是单一的阶段停滞，而是“关键角色未覆盖”和“标讯临期”正在相互放大。",
+          sections: [
+            { title: "当前风险", items: [
+              { label: "阶段停滞", text: "需求确认阶段已持续 18 天，方案输入尚未完整。" },
+              { label: "关系缺口", text: "技术负责人未覆盖，需求边界和验收口径缺少权威确认。" },
+              { label: "标讯时限", text: "关联标讯 3 天后截止，留给内部评审与资源协调的时间有限。" }
+            ]},
+            { title: "建议行动", items: [
+              { label: "今天", text: "约谈技术负责人，确认需求边界、技术约束与决策流程。" },
+              { label: "明天前", text: "补齐技术符合性矩阵，并完成一次销售与售前联合评审。" },
+              { label: "责任闭环", text: "将上述两项动作写入任务，明确负责人和截止时间。" }
+            ]}
+          ],
+          actions: [
+            { label: "查看商机详情", route: "opportunities", primary: true },
+            { label: "创建推进任务", action: "create-task" }
+          ]
+        },
+        "opp-huanan": {
+          prompt: "评估华南数据中心扩容机会，并告诉我是否应该立即承接。",
+          intro: "该机会具备较好的客户匹配基础和明确时限，建议立即进入承接确认，但在正式认领前先核验归属和售前容量。",
+          sections: [
+            { title: "机会条件", items: [
+              { label: "预计金额", text: "约 220 万元，当前处于方案交流阶段。" },
+              { label: "客户基础", text: "系统已匹配 2 个客户，可复用已有关系与历史需求信息。" },
+              { label: "时间窗口", text: "3 天后截止，今天必须确认责任人。" }
+            ]}
+          ],
+          actions: [
+            { label: "确认认领", action: "claim-tender", primary: true },
+            { label: "查看商机列表", route: "opportunities" }
+          ]
+        },
+        "customer-huadong": {
+          prompt: "分析华东能源集团的客户关系缺口，并帮我准备下一次经营回访。",
+          intro: "华东能源集团目前有明确扩容机会，但关键决策人覆盖不足，最近一次有效互动距今 21 天。建议把下次回访从一般关系维护升级为“机会验证＋关键人补位”。",
+          sections: [
+            { title: "回访重点", items: [
+              { label: "机会验证", text: "确认扩容范围、预算窗口和内部立项节奏。" },
+              { label: "关系补位", text: "请现有联系人引荐关键决策人，并确认其关注指标。" },
+              { label: "会后闭环", text: "将新情报回填客户档案，并同步更新关联商机判断。" }
+            ]}
+          ],
+          actions: [
+            { label: "准备拜访", action: "prepare-visit", primary: true },
+            { label: "查看客户", route: "customers" }
+          ]
+        },
+        "customer-huabei": {
+          prompt: "华北政务云目前关系健康，为什么还需要关注？",
+          intro: "“关系健康”代表现有沟通稳定，并不等于关键角色覆盖完整。该客户当前同时存在 1 条标讯和 2 个商机，技术影响层的覆盖质量会直接影响后续转化。",
+          sections: [
+            { title: "需要继续关注的原因", items: [
+              { label: "机会密度", text: "一个客户下并行存在多条机会，信息一致性要求更高。" },
+              { label: "角色结构", text: "技术负责人仍需形成稳定沟通链路，避免方案判断依赖单一联系人。" }
+            ]}
+          ],
+          actions: [{ label: "查看客户工作台", route: "customers", primary: true }]
+        },
+        "schedule-huadong": {
+          prompt: "为 09:30 的华东能源集团经营回访生成访前准备要点。",
+          intro: "这次回访应围绕扩容机会和关键关系补位展开。建议会前统一目标、问题清单和会后责任人。",
+          sections: [
+            { title: "访前清单", items: [
+              { label: "业务目标", text: "确认扩容范围、预算窗口和决策时间。" },
+              { label: "关系目标", text: "争取获得关键决策人的引荐和下一次正式沟通安排。" },
+              { label: "材料", text: "准备现有服务情况、扩容假设和三个需要客户确认的问题。" }
+            ]}
+          ],
+          actions: [{ label: "生成拜访草稿", action: "prepare-visit", primary: true }]
+        },
+        "schedule-huabei": {
+          prompt: "为 14:00 的华北政企云项目售前协同会整理议程。",
+          intro: "建议把会议目标收敛为“在 45 分钟内确认方案边界和标讯责任分工”，避免只同步信息、不形成结论。",
+          sections: [
+            { title: "建议议程", items: [
+              { label: "10 分钟", text: "复盘已确认需求与未决问题。" },
+              { label: "20 分钟", text: "确认技术边界、缺口和符合性矩阵责任人。" },
+              { label: "15 分钟", text: "确定标讯截止前的交付节点与下一次检查时间。" }
+            ]}
+          ],
+          actions: [{ label: "创建会议任务", action: "create-task", primary: true }]
+        },
+        "analytics-pipeline": {
+          prompt: "当前管道覆盖是 2.8 倍，这个水平是否健康？",
+          intro: "2.8 倍的管道覆盖基本可用，但低于更稳健的 3 倍参考线。更重要的是，当前高风险商机占比较高，不能只看金额覆盖。",
+          sections: [
+            { title: "经营判断", items: [
+              { label: "数量", text: "管道金额足以支撑目标，但安全边际有限。" },
+              { label: "质量", text: "4 个高风险商机合计 620 万元，需要在预测中做风险折减。" },
+              { label: "动作", text: "优先恢复 3 个阶段停滞项目，并补充可快速验证的新机会。" }
+            ]}
+          ],
+          actions: [{ label: "查看经营分析", route: "analytics", primary: true }]
+        },
+        "analytics-cycle": {
+          prompt: "销售周期 74 天偏长，最应该在哪个环节干预？",
+          intro: "当前最值得干预的是需求确认到方案交流之间的停滞。关键角色未覆盖和内部方案边界不清，是周期拉长的主要原因。",
+          sections: [
+            { title: "干预建议", items: [
+              { label: "角色门槛", text: "进入方案阶段前必须确认业务与技术两类关键角色。" },
+              { label: "阶段规则", text: "连续 10 天无有效进展自动进入风险复盘。" },
+              { label: "协同机制", text: "高金额商机在方案交流前完成一次销售与售前联合评审。" }
+            ]}
+          ],
+          actions: [{ label: "查看停滞商机", route: "opportunities", primary: true }]
         }
       };
 
-      function announce(message) {
-        workbenchLive.textContent = "";
-        requestAnimationFrame(() => { workbenchLive.textContent = message; });
+      const WORKBENCH_ACTIONS = {
+        "new-record": { title: "新建业务记录", copy: "选择当前工作台上下文，生成一条可继续编辑的业务记录草稿。", context: "客户、商机与任务字段将沿用当前页面信息。", confirm: "生成草稿" },
+        "record-followup": { title: "记录跟进", copy: "快速生成客户或商机跟进记录。", context: "包含沟通对象、核心结论、下一步动作与预计时间。", confirm: "生成草稿" },
+        "prepare-visit": { title: "准备拜访", copy: "基于当前客户信息生成一份访前准备草稿。", context: "包含拜访目标、关键问题、关系缺口与会后动作。", confirm: "生成草稿" },
+        "create-opportunity": { title: "新建商机", copy: "从当前客户或标讯上下文创建商机草稿。", context: "将预填客户、预计金额、当前阶段与来源信息。", confirm: "创建草稿" },
+        "upload-minutes": { title: "上传纪要", copy: "选择会议纪要后，可由 Agent 提取关键信息并生成跟进项。", context: "本地原型仅演示入口，不会上传真实文件。", confirm: "选择文件" },
+        "create-task": { title: "创建推进任务", copy: "把当前 Agent 建议转为可执行任务。", context: "将保留上下文、建议负责人和截止时间，提交前仍可编辑。", confirm: "创建任务" },
+        "claim-tender": { title: "认领华南数据中心扩容标讯", copy: "确认客户归属与承接意愿后，将标讯转为负责人的跟进事项。", context: "预计金额 220 万元 · 已匹配 2 个客户 · 3 天后截止", confirm: "确认认领" }
+      };
+
+      function escapeHtml(value) {
+        return String(value == null ? "" : value).replace(/[&<>"']/g, (character) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
+        })[character]);
       }
 
-      function renderFocusTab() {
-        const tab = state.workbench.focusTab;
-        document.querySelectorAll("[data-focus-tab]").forEach((button) => button.classList.toggle("active", button.dataset.focusTab === tab));
-        const panels = {
-          facts: `<h2 class="wb-section-title">可核对事实</h2><p class="wb-section-note">以下仅使用当前对象和已绑定来源，不把 Agent 推断写成业务事实。</p><dl class="wb-fact-grid"><div class="wb-fact"><dt>对象</dt><dd>北辰科技商机</dd></div><div class="wb-fact"><dt>当前步骤</dt><dd>核验证据</dd></div><div class="wb-fact"><dt>下一步</dt><dd>尚未落账</dd></div><div class="wb-fact"><dt>关键联系人</dt><dd>待补充</dd></div></dl><ul class="wb-evidence-list"><li class="wb-evidence-item"><svg class="fx-svg" aria-hidden="true"><use href="#fx-crm"></use></svg><div><div class="wb-evidence-title">商机对象字段</div><div class="wb-evidence-note">事实来源 · 当前对象版本</div></div><button class="wb-source-link" type="button" data-evidence="opportunity">定位字段</button></li><li class="wb-evidence-item"><svg class="fx-svg" aria-hidden="true"><use href="#fx-draftbox"></use></svg><div><div class="wb-evidence-title">最近跟进记录</div><div class="wb-evidence-note">事实来源 · 存在一条待核验记录</div></div><button class="wb-source-link" type="button" data-evidence="record">查看记录</button></li><li class="wb-evidence-item"><svg class="fx-svg" aria-hidden="true"><use href="#fx-contacts"></use></svg><div><div class="wb-evidence-title">联系人关系</div><div class="wb-evidence-note">证据缺失 · 未确认关键联系人</div></div><button class="wb-source-link" type="button" data-evidence="contact">补充上下文</button></li></ul>`,
-          timeline: `<h2 class="wb-section-title">对象时间线</h2><p class="wb-section-note">只呈现本验证切片中有来源的事件。</p><ul class="wb-compact-list"><li class="wb-compact-row"><span class="wb-time">当前</span><div><div class="wb-compact-title">进入核验证据步骤</div><div class="wb-compact-note">来源：北辰科技商机跟进活动</div></div></li><li class="wb-compact-row"><span class="wb-time">最近</span><div><div class="wb-compact-title">跟进记录待核验</div><div class="wb-compact-note">未确认前不会作为执行依据</div></div></li></ul>`,
-          relations: `<h2 class="wb-section-title">对象关系</h2><p class="wb-section-note">关系由当前活动的对象范围限定。</p><dl class="wb-fact-grid"><div class="wb-fact"><dt>客户</dt><dd>北辰科技</dd></div><div class="wb-fact"><dt>商机</dt><dd>北辰科技商机</dd></div><div class="wb-fact"><dt>联系人</dt><dd>待确认</dd></div><div class="wb-fact"><dt>活动</dt><dd>北辰科技商机跟进</dd></div></dl>`,
-          actions: `<h2 class="wb-section-title">可用动作</h2><p class="wb-section-note">当前证据只允许内部动作；外部沟通保持禁用。</p><ul class="wb-evidence-list"><li class="wb-evidence-item"><svg class="fx-svg" aria-hidden="true"><use href="#fx-todo"></use></svg><div><div class="wb-evidence-title">更新下一步计划</div><div class="wb-evidence-note">中风险 · 执行前需查看差异</div></div><button class="wb-source-link" type="button" data-open-evidence>查看证据</button></li><li class="wb-evidence-item"><svg class="fx-svg" aria-hidden="true"><use href="#fx-remind"></use></svg><div><div class="wb-evidence-title">发送客户消息</div><div class="wb-evidence-note">联系人证据缺失 · 当前不可执行</div></div><span class="wb-tag wb-tag-warning">已阻止</span></li></ul>`
-        };
-        document.getElementById("focusTabPanel").innerHTML = panels[tab] || panels.facts;
+      function routeNav(active) {
+        const routes = [
+          ["home", "首页"],
+          ["customers", "客户经营"],
+          ["opportunities", "商机跟进"],
+          ["analytics", "经营分析"],
+          ["tasks", "任务与日程"]
+        ];
+        return '<nav class="wb-route-nav" aria-label="销售工作台页面" data-od-id="workbench-route-nav">' +
+          routes.map((item) => '<button class="wb-route' + (item[0] === active ? ' active' : '') + '" type="button" data-route="' + item[0] + '" data-od-id="route-' + item[0] + '">' + item[1] + '</button>').join("") +
+          '</nav>';
       }
 
-      function renderObjectPeek() {
-        const selected = state.workbench.selectedObject;
-        activityObjectList.querySelectorAll("[data-object]").forEach((button) => button.classList.toggle("active", button.dataset.object === selected));
-        if (!selected || !objectData[selected]) {
-          peekEmpty.hidden = false;
-          peekContent.hidden = true;
-          return;
+      function workbenchHeader(active, eyebrow, title, subtitle) {
+        return [
+          '<header class="wb-header" data-od-id="workbench-header">',
+            '<div class="wb-heading">',
+              '<p class="wb-eyebrow">' + escapeHtml(eyebrow) + '</p>',
+              '<h1 class="wb-title" data-od-id="workbench-title">' + escapeHtml(title) + '</h1>',
+              '<p class="wb-subtitle">' + escapeHtml(subtitle) + '</p>',
+            '</div>',
+            '<div class="wb-header-actions">',
+              '<button class="wb-btn" type="button" data-workbench-refresh data-od-id="workbench-refresh"><svg class="fx-svg" aria-hidden="true"><use href="#fx-dependency"></use></svg>刷新</button>',
+              '<button class="wb-btn wb-btn-primary" type="button" data-workbench-action="new-record" data-od-id="workbench-new-record"><svg class="fx-svg" aria-hidden="true"><use href="#fx-add"></use></svg>新建</button>',
+            '</div>',
+          '</header>',
+          routeNav(active)
+        ].join("");
+      }
+
+      function renderHomeView() {
+        return [
+          '<div class="workbench-root" data-view="home" data-od-id="sales-workbench-home">',
+            workbenchHeader("home", "销售作战 · 今日", "销售人员工作台", "今天优先做正确的客户经营和商机推进动作"),
+            '<section class="wb-brief" data-od-id="today-ai-brief">',
+              '<div>',
+                '<div class="wb-brief-label"><span class="wb-brief-dot" aria-hidden="true"></span>今日经营简报</div>',
+                '<p>今天建议优先处理 3 项高价值事项：1 个阶段停滞商机、1 个新标讯机会、1 个重点客户关系缺口。预计处理时间约 2 小时。</p>',
+              '</div>',
+              '<button class="wb-btn" type="button" data-context-id="brief-today" data-od-id="brief-agent-analysis">让 Agent 拆解</button>',
+            '</section>',
+            '<section class="wb-section" data-od-id="home-kpis">',
+              '<div class="wb-section-head"><h2 class="wb-section-title">经营概览</h2><span class="wb-section-meta">数据更新至今天 08:45</span></div>',
+              '<div class="wb-kpi-grid">',
+                '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-target" data-od-id="kpi-target-completion"><div class="wb-kpi-label">本月目标完成</div><div class="wb-kpi-value">68%</div><div class="wb-kpi-meta">较上月提升 8%</div></button>',
+                '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-opportunity" data-od-id="kpi-key-opportunities"><div class="wb-kpi-label">重点商机金额</div><div class="wb-kpi-value">¥1,280万</div><div class="wb-kpi-meta">12 个推进中</div></button>',
+                '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-customer" data-od-id="kpi-customer-coverage"><div class="wb-kpi-label">重点客户覆盖</div><div class="wb-kpi-value">82%</div><div class="wb-kpi-meta">有 2 个关系缺口</div></button>',
+                '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-tender" data-od-id="kpi-new-tenders"><div class="wb-kpi-label">新标讯机会</div><div class="wb-kpi-value">4条</div><div class="wb-kpi-meta">今日新增 2 条</div></button>',
+              '</div>',
+            '</section>',
+            '<section class="wb-section wb-split" data-od-id="home-priorities">',
+              '<article class="wb-card wb-panel" data-od-id="priority-todos">',
+                '<div class="wb-section-head"><h2 class="wb-section-title">优先待办</h2><button class="wb-link" type="button" data-route="tasks">查看全部</button></div>',
+                '<div class="wb-list">',
+                  '<button class="wb-card wb-card-button wb-todo" type="button" data-route="opportunities" data-context-id="opp-huabei" data-od-id="todo-huabei-opportunity"><div><div class="wb-item-title">推进华北政企云项目</div><div class="wb-item-copy">阶段停滞 18 天 · 技术负责人未覆盖 · 关联标讯 3 天后截止</div></div><div class="wb-item-side"><span class="wb-tag wb-tag-accent">高风险</span><span class="wb-deadline">今天</span></div></button>',
+                  '<button class="wb-card wb-card-button wb-todo" type="button" data-route="customers" data-context-id="customer-huadong" data-od-id="todo-huadong-customer"><div><div class="wb-item-title">补充华东能源集团客户关系</div><div class="wb-item-copy">关键决策人覆盖不足 · 最近有效互动 21 天前</div></div><div class="wb-item-side"><span class="wb-tag">待跟进</span><span class="wb-deadline">明天</span></div></button>',
+                  '<button class="wb-card wb-card-button wb-todo" type="button" data-context-id="opp-huanan" data-od-id="todo-huanan-tender"><div><div class="wb-item-title">确认华南数据中心扩容标讯</div><div class="wb-item-copy">系统匹配 2 个客户 · 需要确认归属和承接意愿</div></div><div class="wb-item-side"><span class="wb-tag">新机会</span><span class="wb-deadline">3天后</span></div></button>',
+                '</div>',
+              '</article>',
+              '<article class="wb-card wb-panel" data-od-id="today-schedule">',
+                '<div class="wb-section-head"><h2 class="wb-section-title">今日日程</h2><button class="wb-link" type="button" data-route="tasks">完整日程</button></div>',
+                '<div class="wb-schedule-list">',
+                  '<button class="wb-schedule" type="button" data-route="tasks" data-context-id="schedule-huadong" data-od-id="schedule-huadong"><span class="wb-time">09:30</span><span><span class="wb-item-title">华东能源集团·经营回访</span><span class="wb-item-copy">客户经营 · 参会 3 人 · AI 访前准备</span></span></button>',
+                  '<button class="wb-schedule" type="button" data-route="tasks" data-context-id="schedule-huabei" data-od-id="schedule-huabei"><span class="wb-time">14:00</span><span><span class="wb-item-title">华北政企云项目·售前协同</span><span class="wb-item-copy">商机跟进 · 方案边界确认</span></span></button>',
+                '</div>',
+              '</article>',
+            '</section>',
+            '<section class="wb-section" data-od-id="quick-actions">',
+              '<div class="wb-section-head"><h2 class="wb-section-title">快速操作</h2><span class="wb-section-meta">从当前业务上下文直接开始</span></div>',
+              '<div class="wb-action-grid">',
+                '<button class="wb-card wb-card-button wb-action" type="button" data-workbench-action="record-followup" data-od-id="action-record-followup"><svg class="fx-svg" aria-hidden="true"><use href="#fx-todo"></use></svg><div class="wb-action-title">记录跟进</div></button>',
+                '<button class="wb-card wb-card-button wb-action" type="button" data-workbench-action="prepare-visit" data-od-id="action-prepare-visit"><svg class="fx-svg" aria-hidden="true"><use href="#fx-flag"></use></svg><div class="wb-action-title">准备拜访</div></button>',
+                '<button class="wb-card wb-card-button wb-action" type="button" data-workbench-action="create-opportunity" data-od-id="action-create-opportunity"><svg class="fx-svg" aria-hidden="true"><use href="#fx-add"></use></svg><div class="wb-action-title">新建商机</div></button>',
+                '<button class="wb-card wb-card-button wb-action" type="button" data-workbench-action="upload-minutes" data-od-id="action-upload-minutes"><svg class="fx-svg" aria-hidden="true"><use href="#fx-dependency"></use></svg><div class="wb-action-title">上传纪要</div></button>',
+              '</div>',
+            '</section>',
+            '<section class="wb-section wb-object-grid" data-od-id="key-objects">',
+              '<article class="wb-card wb-object-column" data-od-id="key-customers">',
+                '<div class="wb-section-head"><h2 class="wb-section-title">重点客户</h2><button class="wb-link" type="button" data-route="customers">进入客户经营</button></div>',
+                '<div class="wb-list">',
+                  '<button class="wb-card wb-card-button wb-object" type="button" data-route="customers" data-context-id="customer-huadong" data-od-id="customer-huadong-card"><span class="wb-object-avatar">华</span><span><span class="wb-item-title">华东能源集团</span><span class="wb-item-copy">重点客户 · 关系覆盖不足 · 有扩容机会</span></span><span class="wb-tag">需关注</span></button>',
+                  '<button class="wb-card wb-card-button wb-object" type="button" data-route="customers" data-context-id="customer-huabei" data-od-id="customer-huabei-card"><span class="wb-object-avatar">北</span><span><span class="wb-item-title">华北政务云</span><span class="wb-item-copy">战略客户 · 本月目标 82% · 标讯 1 条</span></span><span class="wb-tag">健康</span></button>',
+                '</div>',
+              '</article>',
+              '<article class="wb-card wb-object-column" data-od-id="key-opportunities">',
+                '<div class="wb-section-head"><h2 class="wb-section-title">重点商机</h2><button class="wb-link" type="button" data-route="opportunities">进入商机跟进</button></div>',
+                '<div class="wb-list">',
+                  '<button class="wb-card wb-card-button wb-object" type="button" data-route="opportunities" data-context-id="opp-huabei" data-od-id="opportunity-huabei-card"><span class="wb-object-avatar">云</span><span><span class="wb-item-title">华北政企云项目</span><span class="wb-item-copy">¥380 万 · 需求确认 · 停滞 18 天</span></span><span class="wb-tag wb-tag-accent">高风险</span></button>',
+                  '<button class="wb-card wb-card-button wb-object" type="button" data-route="opportunities" data-context-id="opp-huanan" data-od-id="opportunity-huanan-card"><span class="wb-object-avatar">数</span><span><span class="wb-item-title">华南数据中心扩容</span><span class="wb-item-copy">¥220 万 · 方案交流 · 3 天后截止</span></span><span class="wb-tag">新机会</span></button>',
+                '</div>',
+              '</article>',
+            '</section>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderCustomersView() {
+        return [
+          '<div class="workbench-root" data-view="customers" data-od-id="customer-workbench">',
+            workbenchHeader("customers", "客户经营", "客户经营工作台", "从关系覆盖、有效互动和新增情报中识别下一步经营动作"),
+            '<section class="wb-section" data-od-id="customer-kpis"><div class="wb-kpi-grid">',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-customer"><div class="wb-kpi-label">重点客户</div><div class="wb-kpi-value">28</div><div class="wb-kpi-meta">8 个需要关注</div></button>',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-customer"><div class="wb-kpi-label">关键人覆盖</div><div class="wb-kpi-value">74%</div><div class="wb-kpi-meta">3 个客户有缺口</div></button>',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="customer-huadong"><div class="wb-kpi-label">新情报</div><div class="wb-kpi-value">16条</div><div class="wb-kpi-meta">4 条与机会相关</div></button>',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-target"><div class="wb-kpi-label">空白机会</div><div class="wb-kpi-value">9个</div><div class="wb-kpi-meta">¥860 万潜力</div></button>',
+            '</div></section>',
+            '<section class="wb-section wb-split" data-od-id="customer-focus">',
+              '<article class="wb-card wb-panel"><div class="wb-section-head"><h2 class="wb-section-title">重点客户清单</h2><span class="wb-section-meta">按经营优先级排序</span></div><div class="wb-list">',
+                '<button class="wb-card wb-card-button wb-todo" type="button" data-context-id="customer-huadong" data-od-id="customer-detail-huadong"><div><div class="wb-item-title">华东能源集团</div><div class="wb-item-copy">最近有效互动 21 天前 · 关键决策人覆盖不足 · 新增扩容情报</div></div><div class="wb-item-side"><span class="wb-tag wb-tag-accent">优先经营</span><span class="wb-deadline">本周</span></div></button>',
+                '<button class="wb-card wb-card-button wb-todo" type="button" data-context-id="customer-huabei" data-od-id="customer-detail-huabei"><div><div class="wb-item-title">华北政务云</div><div class="wb-item-copy">关系健康 · 标讯 1 条 · 推进中商机 2 个</div></div><div class="wb-item-side"><span class="wb-tag">持续经营</span><span class="wb-deadline">本月</span></div></button>',
+              '</div></article>',
+              '<article class="wb-card wb-panel" data-od-id="customer-plan"><div class="wb-section-head"><h2 class="wb-section-title">经营建议</h2></div><div class="wb-check-list">',
+                '<div class="wb-check"><div><div class="wb-item-title">补齐关键人</div><div class="wb-item-copy">用扩容机会作为议题，请现有联系人引荐关键决策人。</div></div><span class="wb-tag">关系</span></div>',
+                '<div class="wb-check"><div><div class="wb-item-title">验证新情报</div><div class="wb-item-copy">确认预算窗口、扩容范围与内部立项节奏。</div></div><span class="wb-tag">情报</span></div>',
+                '<div class="wb-check"><div><div class="wb-item-title">关联机会</div><div class="wb-item-copy">将有效情报同步到客户下的商机判断。</div></div><span class="wb-tag">商机</span></div>',
+              '</div><div class="wb-inline-actions"><button class="wb-btn wb-btn-primary" type="button" data-workbench-action="prepare-visit">准备客户回访</button></div></article>',
+            '</section>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderOpportunitiesView() {
+        return [
+          '<div class="workbench-root" data-view="opportunities" data-od-id="opportunity-workbench">',
+            workbenchHeader("opportunities", "商机推进", "商机跟进工作台", "识别阶段停滞、关键角色缺口和标讯时限，形成可执行的推进计划"),
+            '<section class="wb-section" data-od-id="opportunity-kpis"><div class="wb-kpi-grid">',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-opportunity"><div class="wb-kpi-label">推进中商机</div><div class="wb-kpi-value">12</div><div class="wb-kpi-meta">合计 ¥1,280 万</div></button>',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="opp-huabei"><div class="wb-kpi-label">阶段停滞</div><div class="wb-kpi-value">3</div><div class="wb-kpi-meta">最长 18 天</div></button>',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="opp-huabei"><div class="wb-kpi-label">高风险商机</div><div class="wb-kpi-value">4</div><div class="wb-kpi-meta">合计 ¥620 万</div></button>',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-tender"><div class="wb-kpi-label">标讯关联商机</div><div class="wb-kpi-value">6</div><div class="wb-kpi-meta">转化率 31%</div></button>',
+            '</div></section>',
+            '<section class="wb-section wb-split" data-od-id="opportunity-focus">',
+              '<article class="wb-card wb-panel"><div class="wb-section-head"><h2 class="wb-section-title">重点商机</h2><span class="wb-section-meta">按风险与时效排序</span></div><div class="wb-list">',
+                '<button class="wb-card wb-card-button wb-todo" type="button" data-context-id="opp-huabei" data-od-id="opportunity-detail-huabei"><div><div class="wb-item-title">华北政企云项目</div><div class="wb-item-copy">¥380 万 · 需求确认 · 停滞 18 天 · 技术负责人未覆盖</div></div><div class="wb-item-side"><span class="wb-tag wb-tag-accent">高风险</span><span class="wb-deadline">3天后</span></div></button>',
+                '<button class="wb-card wb-card-button wb-todo" type="button" data-context-id="opp-huanan" data-od-id="opportunity-detail-huanan"><div><div class="wb-item-title">华南数据中心扩容</div><div class="wb-item-copy">¥220 万 · 方案交流 · 关联新标讯 · 待认领</div></div><div class="wb-item-side"><span class="wb-tag">新机会</span><span class="wb-deadline">3天后</span></div></button>',
+                '<button class="wb-card wb-card-button wb-todo" type="button" data-context-id="kpi-opportunity" data-od-id="opportunity-detail-energy"><div><div class="wb-item-title">华东能源数据治理</div><div class="wb-item-copy">¥160 万 · 商务谈判 · 预算已确认</div></div><div class="wb-item-side"><span class="wb-tag">推进中</span><span class="wb-deadline">本周</span></div></button>',
+              '</div></article>',
+              '<article class="wb-card wb-panel" data-od-id="win-check"><div class="wb-section-head"><h2 class="wb-section-title">赢单检查</h2></div><div class="wb-stage-flow">',
+                '<div class="wb-stage"><strong>线索确认</strong>已完成</div><div class="wb-stage active"><strong>需求确认</strong>停滞 18 天</div><div class="wb-stage"><strong>方案交流</strong>待进入</div><div class="wb-stage"><strong>商务谈判</strong>未开始</div><div class="wb-stage"><strong>签约</strong>未开始</div>',
+              '</div><div class="wb-check-list">',
+                '<div class="wb-check"><div><div class="wb-item-title">技术负责人覆盖</div><div class="wb-item-copy">尚未建立直接沟通链路</div></div><span class="wb-tag wb-tag-accent">缺口</span></div>',
+                '<div class="wb-check"><div><div class="wb-item-title">方案边界确认</div><div class="wb-item-copy">需要销售与售前联合评审</div></div><span class="wb-tag">待完成</span></div>',
+                '<div class="wb-check"><div><div class="wb-item-title">标讯符合性矩阵</div><div class="wb-item-copy">应在明天前完成初稿</div></div><span class="wb-tag">临期</span></div>',
+              '</div><div class="wb-inline-actions"><button class="wb-btn wb-btn-primary" type="button" data-context-id="opp-huabei">让 Agent 生成推进计划</button></div></article>',
+            '</section>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderAnalyticsView() {
+        return [
+          '<div class="workbench-root" data-view="analytics" data-od-id="analytics-workbench">',
+            workbenchHeader("analytics", "经营洞察", "经营分析工作台", "把结果指标、管道质量和推进效率放在同一个经营视角中"),
+            '<section class="wb-section" data-od-id="analytics-kpis"><div class="wb-kpi-grid">',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-target"><div class="wb-kpi-label">目标完成</div><div class="wb-kpi-value">72%</div><div class="wb-kpi-meta">按当前确认口径</div></button>',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="analytics-pipeline"><div class="wb-kpi-label">管道覆盖</div><div class="wb-kpi-value">2.8x</div><div class="wb-kpi-meta">参考线 3.0x</div></button>',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="kpi-opportunity"><div class="wb-kpi-label">赢单率</div><div class="wb-kpi-value">24%</div><div class="wb-kpi-meta">重点商机口径</div></button>',
+              '<button class="wb-card wb-card-button wb-kpi" type="button" data-context-id="analytics-cycle"><div class="wb-kpi-label">销售周期</div><div class="wb-kpi-value">74天</div><div class="wb-kpi-meta">需求确认阶段偏长</div></button>',
+            '</div></section>',
+            '<section class="wb-section wb-split" data-od-id="analytics-detail">',
+              '<article class="wb-card wb-chart"><div class="wb-section-head"><h2 class="wb-section-title">目标与管道</h2><span class="wb-section-meta">金额口径</span></div>',
+                '<div class="wb-chart-row"><span>目标完成</span><span class="wb-chart-track"><span class="wb-chart-fill" style="width:72%"></span></span><strong>72%</strong></div>',
+                '<div class="wb-chart-row"><span>管道覆盖</span><span class="wb-chart-track"><span class="wb-chart-fill" style="width:93%"></span></span><strong>2.8x</strong></div>',
+                '<div class="wb-chart-row"><span>关键人覆盖</span><span class="wb-chart-track"><span class="wb-chart-fill" style="width:74%"></span></span><strong>74%</strong></div>',
+                '<div class="wb-chart-row"><span>赢单率</span><span class="wb-chart-track"><span class="wb-chart-fill" style="width:24%"></span></span><strong>24%</strong></div>',
+              '</article>',
+              '<article class="wb-card wb-panel"><div class="wb-section-head"><h2 class="wb-section-title">建议干预</h2></div><div class="wb-list">',
+                '<button class="wb-card wb-card-button wb-analysis-row" type="button" data-route="opportunities" data-context-id="analytics-cycle"><div><div class="wb-item-title">缩短需求确认阶段</div><div class="wb-item-copy">3 个商机阶段停滞，最长 18 天</div></div><span class="wb-tag">效率</span></button>',
+                '<button class="wb-card wb-card-button wb-analysis-row" type="button" data-route="customers" data-context-id="kpi-customer"><div><div class="wb-item-title">补齐关键角色覆盖</div><div class="wb-item-copy">3 个重点客户存在决策或技术角色缺口</div></div><span class="wb-tag">关系</span></button>',
+                '<button class="wb-card wb-card-button wb-analysis-row" type="button" data-context-id="analytics-pipeline"><div><div class="wb-item-title">提高管道安全边际</div><div class="wb-item-copy">2.8x 覆盖略低于 3.0x 参考线</div></div><span class="wb-tag">管道</span></button>',
+              '</div></article>',
+            '</section>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderTasksView() {
+        return [
+          '<div class="workbench-root" data-view="tasks" data-od-id="tasks-workbench">',
+            workbenchHeader("tasks", "执行节奏", "任务与日程", "把高价值事项、会议准备和截止时间统一成今天的行动清单"),
+            '<section class="wb-section wb-task-layout" data-od-id="task-layout">',
+              '<article class="wb-card wb-panel"><div class="wb-section-head"><h2 class="wb-section-title">今日优先任务</h2><span class="wb-section-meta">3 项</span></div><div class="wb-list">',
+                '<button class="wb-card wb-card-button wb-todo" type="button" data-route="opportunities" data-context-id="opp-huabei"><div><div class="wb-item-title">推进华北政企云项目</div><div class="wb-item-copy">确认技术负责人、方案边界与标讯节点</div></div><div class="wb-item-side"><span class="wb-tag wb-tag-accent">高风险</span><span class="wb-deadline">今天</span></div></button>',
+                '<button class="wb-card wb-card-button wb-todo" type="button" data-route="customers" data-context-id="customer-huadong"><div><div class="wb-item-title">补充华东能源集团客户关系</div><div class="wb-item-copy">请现有联系人引荐关键决策人</div></div><div class="wb-item-side"><span class="wb-tag">待跟进</span><span class="wb-deadline">明天</span></div></button>',
+                '<button class="wb-card wb-card-button wb-todo" type="button" data-context-id="opp-huanan"><div><div class="wb-item-title">确认华南数据中心扩容标讯</div><div class="wb-item-copy">确认客户归属、承接意愿与售前容量</div></div><div class="wb-item-side"><span class="wb-tag">新机会</span><span class="wb-deadline">3天后</span></div></button>',
+              '</div></article>',
+              '<article class="wb-card wb-panel"><div class="wb-section-head"><h2 class="wb-section-title">今日日程</h2></div><div class="wb-schedule-list">',
+                '<button class="wb-schedule" type="button" data-context-id="schedule-huadong"><span class="wb-time">09:30</span><span><span class="wb-item-title">华东能源集团·经营回访</span><span class="wb-item-copy">客户经营 · 参会 3 人</span></span></button>',
+                '<button class="wb-schedule" type="button" data-context-id="schedule-huabei"><span class="wb-time">14:00</span><span><span class="wb-item-title">华北政企云项目·售前协同</span><span class="wb-item-copy">方案边界确认</span></span></button>',
+              '</div></article>',
+            '</section>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderEmptyView(menuName) {
+        return [
+          '<div class="workbench-root" data-view="empty" data-od-id="empty-workbench">',
+            workbenchHeader("empty", "CRM 工作区", menuName, "该菜单保留原有入口，目前尚未接入销售人员工作台内容。"),
+            '<section class="wb-card wb-empty" data-od-id="empty-workbench-state"><div><h2>当前菜单暂无演示内容</h2><p>你可以返回首页，继续体验客户、商机、经营分析与任务之间的联动。</p><div class="wb-inline-actions" style="justify-content:center;margin-top:18px"><button class="wb-btn wb-btn-primary" type="button" data-route="home">返回销售工作台</button></div></div></section>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderWorkbench(view, menuName) {
+        const selected = ALLOWED_WORKBENCH_VIEWS.includes(view) ? view : "home";
+        let html = "";
+        if (selected === "customers") html = renderCustomersView();
+        else if (selected === "opportunities") html = renderOpportunitiesView();
+        else if (selected === "analytics") html = renderAnalyticsView();
+        else if (selected === "tasks") html = renderTasksView();
+        else if (selected === "empty") html = renderEmptyView(menuName || state.activeMenu || "当前菜单");
+        else html = renderHomeView();
+        workspaceCard.innerHTML = html;
+        if (activeAgentContextId) {
+          workspaceCard.querySelectorAll("[data-context-id]").forEach((element) => {
+            element.classList.toggle("is-active", element.dataset.contextId === activeAgentContextId);
+          });
         }
-        const data = objectData[selected];
-        peekTitle.textContent = data.title;
-        peekFacts.replaceChildren();
-        data.facts.forEach(([label, value]) => {
-          const box = document.createElement("div");
-          box.className = "wb-fact";
-          const dt = document.createElement("dt");
-          const dd = document.createElement("dd");
-          dt.textContent = label;
-          dd.textContent = value;
-          box.append(dt, dd);
-          peekFacts.appendChild(box);
-        });
-        peekEmpty.hidden = true;
-        peekContent.hidden = false;
-        document.getElementById("openObjectFocus").hidden = selected !== "opportunity";
+        workspaceCard.scrollTop = 0;
       }
 
-      function renderExecutionMonitor() {
-        const execution = state.workbench.execution;
-        const visible = execution.running || execution.paused || execution.progress > 0;
-        executionMonitorButton.hidden = !visible;
-        const label = execution.paused ? "已暂停" : execution.progress >= 100 ? "已完成" : "执行 " + Math.round(execution.progress) + "%";
-        executionMonitorLabel.textContent = label;
-        monitorPercent.textContent = Math.round(execution.progress) + "%";
-        monitorProgress.style.width = execution.progress + "%";
-        monitorStateTag.textContent = execution.paused ? "已暂停" : execution.progress >= 100 ? "已完成" : "执行中";
-        pauseExecutionButton.textContent = execution.paused ? "继续" : "暂停";
+      function navigateWorkbench(view, persist = true) {
+        const selected = ALLOWED_WORKBENCH_VIEWS.includes(view) && view !== "empty" ? view : "home";
+        const menuName = WORKBENCH_ROUTE_MENUS[selected] || "首页";
+        const buttons = getMenuButtons();
+        const target = buttons.find((button) => button.dataset.menu === menuName);
+        buttons.forEach((button) => button.classList.toggle("active", button === target));
+        state.workbench.view = selected;
+        state.activeMenu = menuName;
+        activeTab.textContent = menuName;
+        workspaceCard.setAttribute("aria-label", menuName + "菜单内容承载区域");
+        renderWorkbench(selected, menuName);
+        if (persist) saveState();
       }
 
-      function renderWorkbench() {
-        const isWorkbench = state.activeMenu === "销售工作台";
-        workbenchRoot.hidden = !isWorkbench;
-        blankMenuHost.hidden = isWorkbench;
-        blankMenuHost.setAttribute("aria-hidden", String(isWorkbench));
-        agentGuidance.classList.toggle("workbench-mode", isWorkbench);
-        if (!isWorkbench) {
-          renderAgentWorkbenchContext();
-          return;
-        }
-        const view = state.workbench.view;
-        [roleView, sceneView, focusView, evidenceView, stateView, receiptView].forEach((section) => { section.hidden = true; });
-        const viewMap = { role: roleView, scene: sceneView, focus: focusView, evidence: evidenceView, receipt: receiptView };
-        (viewMap[view] || roleView).hidden = false;
-        state.workbench.checkpointView = view;
-        workingScopeValue.textContent = state.workbench.workingScope + " 个商机";
-        committedScopeValue.textContent = state.workbench.committedScope + " 个商机";
-        const hasDiff = state.workbench.workingScope !== state.workbench.committedScope;
-        scopeDiffBar.hidden = !hasDiff;
-        scopeDiffCopy.textContent = "页面已从 " + state.workbench.committedScope + " 个调整为 " + state.workbench.workingScope + " 个，Agent 仍使用旧快照。";
-        renderObjectPeek();
-        renderFocusTab();
-        renderExecutionMonitor();
-        renderAgentWorkbenchContext();
-      }
-
-      function showWorkbenchView(view, focusTarget) {
-        state.workbench.view = view;
-        state.workbench.checkpointView = view;
-        renderWorkbench();
-        saveState();
-        if (focusTarget) requestAnimationFrame(() => document.getElementById(focusTarget)?.focus());
-      }
-
-      function performMenuSelection(name, persist = true) {
+      function selectMenu(name, persist = true) {
         const buttons = getMenuButtons();
         const target = buttons.find((button) => button.dataset.menu === name) || buttons[0];
         if (!target) return;
         buttons.forEach((button) => button.classList.toggle("active", button === target));
         state.activeMenu = target.dataset.menu;
+        state.workbench.view = WORKBENCH_MENU_ROUTES[state.activeMenu] || "empty";
         activeTab.textContent = state.activeMenu;
         workspaceCard.setAttribute("aria-label", state.activeMenu + "菜单内容承载区域");
-        if (state.activeMenu !== "销售工作台") setAgent(false, false, false);
-        else if (recoveryBar) recoveryBar.hidden = state.workbench.view === "role";
-        renderWorkbench();
+        renderWorkbench(state.workbench.view, state.activeMenu);
         if (persist) saveState();
-      }
-
-      function selectMenu(name, persist = true) {
-        if (name !== "销售工作台" && state.activeMenu === "销售工作台" && state.workbench.execution.running) {
-          pendingMenuName = name;
-          switchGuardDialog.hidden = false;
-          requestAnimationFrame(() => document.getElementById("cancelMenuSwitch").focus());
-          return;
-        }
-        performMenuSelection(name, persist);
       }
 
       function renderCustomMenuManager() {
@@ -1559,48 +1504,99 @@
         if (returnFocus && dialogReturnFocus && typeof dialogReturnFocus.focus === "function") dialogReturnFocus.focus();
       }
 
-      function renderAgentWorkbenchContext() {
-        const isWorkbench = state.activeMenu === "销售工作台";
-        agentWorkbenchContext.hidden = !isWorkbench;
-        if (!isWorkbench) return;
-        const view = state.workbench.view;
-        const objectLabel = view === "role" ? "尚未进入" : view === "scene" ? "活动对象范围" : "北辰科技商机";
-        const hasDiff = state.workbench.workingScope !== state.workbench.committedScope;
-        let module = "";
-        if (state.workbench.execution.running || state.workbench.execution.paused) {
-          module = `<article class="agent-module"><div class="agent-module-label">执行控制</div><h3>北辰科技商机跟进</h3><p>任务与当前页面解耦，切换中央视图不会中断。当前进度 ${Math.round(state.workbench.execution.progress)}%。</p><ul class="agent-step-list"><li class="agent-step"><svg class="fx-svg" aria-hidden="true"><use href="#fx-todo"></use></svg><span>核对对象与动作范围</span><span>完成</span></li><li class="agent-step current"><svg class="fx-svg" aria-hidden="true"><use href="#fx-remind"></use></svg><span>更新内部下一步计划</span><span>${state.workbench.execution.paused ? "暂停" : "进行中"}</span></li><li class="agent-step"><svg class="fx-svg" aria-hidden="true"><use href="#fx-todo"></use></svg><span>回写活动与角色队列</span><span>等待</span></li></ul><div class="agent-module-actions"><button class="wb-btn" type="button" data-agent-action="pause">${state.workbench.execution.paused ? "继续执行" : "暂停"}</button><button class="wb-btn" type="button" data-agent-action="takeover">手动接管</button></div></article>`;
-        } else if (view === "role") {
-          module = `<article class="agent-module"><div class="agent-module-label">优先事项解释</div><h3>建议先推进北辰科技商机跟进</h3><p>该活动同时涉及商机、客户和联系人证据。进入后我会沿用同一作用域，不自动提交任何动作。</p><div class="agent-module-actions"><button class="wb-btn wb-btn-primary" type="button" data-agent-action="start-activity">进入活动</button></div></article>`;
-        } else if (view === "scene") {
-          module = `<article class="agent-module"><div class="agent-module-label">活动范围</div><h3>${hasDiff ? "页面范围尚未提交" : "范围已与页面对齐"}</h3><p>${hasDiff ? "页面是 " + state.workbench.workingScope + " 个商机，我仍使用 " + state.workbench.committedScope + " 个快照。请应用或恢复后再形成提案。" : "当前范围包含商机、客户与联系人。先核对北辰科技商机的证据。"}</p><div class="agent-module-actions">${hasDiff ? '<button class="wb-btn wb-btn-primary" type="button" data-agent-action="commit-scope">应用页面范围</button>' : '<button class="wb-btn wb-btn-primary" type="button" data-agent-action="open-opportunity">核对商机</button>'}</div></article>`;
-        } else if (view === "focus") {
-          module = `<article class="agent-module"><div class="agent-module-label">下一步提案</div><h3>先确认关键联系人</h3><p>这是基于现有商机字段与跟进记录的推断。联系人证据缺失，因此不会生成可直接外发的消息。</p><ul class="agent-source-list"><li class="agent-source-row"><span>商机对象字段 · 当前版本</span><button type="button" data-agent-action="source-opportunity">定位</button></li><li class="agent-source-row"><span>联系人关系 · 证据缺失</span><button type="button" data-agent-action="source-contact">查看</button></li></ul><div class="agent-module-actions"><button class="wb-btn wb-btn-primary" type="button" data-agent-action="open-evidence">查看绑定证据</button></div></article>`;
-        } else if (view === "evidence") {
-          module = `<article class="agent-module"><div class="agent-module-label">执行前控制</div><h3>动作范围已冻结</h3><p>只更新北辰科技商机的内部下一步计划并创建内部待办；不会发送客户消息。</p><div class="agent-module-actions"><button class="wb-btn wb-btn-primary" type="button" data-agent-action="preview">打开动作预览</button></div></article>`;
-        } else {
-          module = `<article class="agent-module"><div class="agent-module-label">执行回执</div><h3>对象、活动与队列已同步</h3><p>可以返回销售工作台继续处理下一项；本次不会留下后台孤儿任务。</p></article>`;
-        }
-        agentWorkbenchContext.innerHTML = `<section class="agent-scope-card"><div class="agent-scope-title"><span>当前工作上下文</span><span class="agent-scope-status">本次会话</span></div><dl class="agent-scope-grid"><dt>角色</dt><dd>销售代表</dd><dt>活动</dt><dd>${view === "role" ? "尚未进入" : "北辰科技商机跟进"}</dd><dt>对象</dt><dd>${objectLabel}</dd><dt>数据</dt><dd>原型验证数据</dd></dl></section>${module}`;
+      function renderAgentContext(context) {
+        const sections = context.sections.map((section, sectionIndex) => [
+          '<section class="agent-context-section" data-od-id="agent-context-section-' + sectionIndex + '">',
+            '<h2>' + escapeHtml(section.title) + '</h2>',
+            '<ul>',
+              section.items.map((item) => '<li><strong>' + escapeHtml(item.label) + '：</strong>' + escapeHtml(item.text) + '</li>').join(""),
+            '</ul>',
+          '</section>'
+        ].join("")).join("");
+        const actions = (context.actions || []).map((action, index) => {
+          const route = action.route ? ' data-context-route="' + escapeHtml(action.route) + '"' : "";
+          const workbenchAction = action.action ? ' data-context-action="' + escapeHtml(action.action) + '"' : "";
+          return '<button class="agent-context-action' + (action.primary ? ' primary' : '') + '" type="button"' + route + workbenchAction + ' data-od-id="agent-context-action-' + index + '">' + escapeHtml(action.label) + '</button>';
+        }).join("");
+        return [
+          '<div class="agent-context-user" data-od-id="agent-context-user-message">' + escapeHtml(context.prompt) + '</div>',
+          '<button class="agent-context-process" type="button" aria-expanded="false" data-context-process-toggle data-od-id="agent-context-process-toggle">',
+            '<svg class="fx-svg" aria-hidden="true"><use href="#fx-arrow-down"></use></svg>',
+            '<span>已读取当前卡片及 3 项关联业务数据</span>',
+          '</button>',
+          '<div class="agent-context-process-detail" data-context-process-detail hidden>已核对当前页面、关联客户或商机，以及页面中显示的截止时间；以下内容仅使用本原型已有数据。</div>',
+          '<article class="agent-context-answer" data-od-id="agent-context-answer">',
+            '<p>' + escapeHtml(context.intro) + '</p>',
+            '<hr class="agent-context-rule" />',
+            sections,
+            actions ? '<div class="agent-context-actions">' + actions + '</div>' : "",
+          '</article>'
+        ].join("");
+      }
+
+      function showAgentContext(contextId) {
+        const context = WORKBENCH_CONTEXTS[contextId];
+        if (!context) return;
+        activeAgentContextId = contextId;
+        state.agent.activeSessionId = null;
+        agentContextTitle.hidden = true;
+        agentWorkbenchContext.innerHTML = renderAgentContext(context);
+        agentWorkbenchContext.hidden = false;
+        agentHero.hidden = true;
+        chatLog.replaceChildren();
+        agentGuidance.classList.add("context-mode");
+        document.querySelectorAll("[data-context-id]").forEach((element) => {
+          element.classList.toggle("is-active", element.dataset.contextId === contextId);
+        });
+        renderSessionList();
+        saveState();
+        setAgent(true);
+        requestAnimationFrame(() => {
+          agentGuidance.scrollTop = 0;
+        });
+      }
+
+      function clearAgentContext() {
+        activeAgentContextId = null;
+        agentContextTitle.hidden = true;
+        agentWorkbenchContext.hidden = true;
+        agentWorkbenchContext.replaceChildren();
+        agentGuidance.classList.remove("context-mode");
+        document.querySelectorAll("[data-context-id]").forEach((element) => element.classList.remove("is-active"));
+      }
+
+      function openWorkbenchAction(actionId) {
+        const action = WORKBENCH_ACTIONS[actionId];
+        if (!action) return;
+        pendingWorkbenchAction = actionId;
+        dialogReturnFocus = document.activeElement;
+        workbenchActionTitle.textContent = action.title;
+        workbenchActionCopy.textContent = action.copy;
+        workbenchActionContext.textContent = action.context;
+        confirmWorkbenchAction.textContent = action.confirm;
+        workbenchActionDialog.hidden = false;
+        setTimeout(() => confirmWorkbenchAction.focus(), 0);
+      }
+
+      function closeWorkbenchAction(returnFocus = true) {
+        workbenchActionDialog.hidden = true;
+        pendingWorkbenchAction = null;
+        if (returnFocus && dialogReturnFocus && typeof dialogReturnFocus.focus === "function") dialogReturnFocus.focus();
       }
 
       function setAgent(open, returnFocus = false, persist = true) {
-        if (open && document.activeElement instanceof HTMLElement) agentReturnFocus = document.activeElement;
         appRoot.classList.toggle("agent-open", open);
         panel.setAttribute("aria-hidden", String(!open));
         panel.inert = !open;
         openAgent.setAttribute("aria-expanded", String(open));
         state.agent.panelOpen = open;
         if (persist) saveState();
-        if (open) {
-          renderAgentWorkbenchContext();
-          setTimeout(() => (state.activeMenu === "销售工作台" ? agentPanelTitle : input).focus(), 230);
-        }
+        if (open) setTimeout(() => input.focus(), 230);
         if (!open) {
           closeSessionDrawer();
           modelMenu.hidden = true;
           modelSelector.setAttribute("aria-expanded", "false");
-          if (returnFocus && agentReturnFocus && typeof agentReturnFocus.focus === "function") agentReturnFocus.focus();
-          else if (returnFocus) openAgent.focus();
+          if (returnFocus) openAgent.focus();
         }
       }
 
@@ -1680,15 +1676,19 @@
       function renderConversation() {
         chatLog.replaceChildren();
         const session = getActiveSession();
-        agentHero.hidden = state.activeMenu === "销售工作台" || Boolean(session);
+        const hasContext = Boolean(activeAgentContextId && WORKBENCH_CONTEXTS[activeAgentContextId]);
+        agentWorkbenchContext.hidden = !hasContext;
+        agentGuidance.classList.toggle("context-mode", hasContext);
+        agentHero.hidden = hasContext || Boolean(session);
         if (session) session.messages.forEach(addBubble);
         sendMessage.disabled = !input.value.trim();
         requestAnimationFrame(() => {
-          agentGuidance.scrollTop = agentGuidance.scrollHeight;
+          agentGuidance.scrollTop = hasContext && !session ? 0 : agentGuidance.scrollHeight;
         });
       }
 
       function startNewConversation() {
+        clearAgentContext();
         state.agent.activeSessionId = null;
         input.value = "";
         saveState();
@@ -1700,6 +1700,7 @@
 
       function activateSession(id) {
         if (!state.agent.sessions.some((session) => session.id === id)) return;
+        clearAgentContext();
         state.agent.activeSessionId = id;
         saveState();
         renderConversation();
@@ -1724,6 +1725,7 @@
       function sendAgentMessage(text) {
         const message = safeString(text, 4000);
         if (!message) return;
+        const contextId = activeAgentContextId;
         let session = getActiveSession();
         const now = new Date().toISOString();
         if (!session) {
@@ -1750,7 +1752,7 @@
           const replyTime = new Date().toISOString();
           target.messages.push({
             role: "assistant",
-            text: "这是本地原型回复：消息已保存到当前会话。接入真实 Agent 服务后，可在这里返回业务结果。",
+            text: contextId ? "已结合当前业务上下文记录你的补充问题。这个本地原型会保留会话；接入真实 Agent 服务后，可继续返回关联客户、商机与任务结果。" : "这是本地原型回复：消息已保存到当前会话。接入真实 Agent 服务后，可在这里返回业务结果。",
             time: replyTime
           });
           target.updatedAt = replyTime;
@@ -1763,88 +1765,12 @@
       function applyAgentState() {
         document.querySelectorAll(".model-option").forEach((option) => option.classList.toggle("active", option.dataset.model === state.agent.model));
         modelSelector.querySelector(".model-label").textContent = state.agent.model;
-        state.agent.floating = false;
-        panel.classList.remove("floating");
-        document.documentElement.style.setProperty("--agent-width", state.agent.panelWidth + "px");
-        popoutAgent.setAttribute("aria-pressed", "false");
+        panel.classList.toggle("floating", state.agent.floating);
+        popoutAgent.setAttribute("aria-pressed", String(state.agent.floating));
+        popoutAgent.title = state.agent.floating ? "贴靠侧边" : "小窗展示";
         setAgent(state.agent.panelOpen, false, false);
         renderSessionList();
         renderConversation();
-        renderAgentWorkbenchContext();
-      }
-
-      function openActionPreviewDialog() {
-        dialogReturnFocus = document.activeElement;
-        confirmEvidence.checked = false;
-        approveAction.disabled = true;
-        actionPreviewDialog.hidden = false;
-        requestAnimationFrame(() => document.getElementById("closeActionPreview").focus());
-      }
-
-      function closeActionPreviewDialog(returnFocus = true) {
-        actionPreviewDialog.hidden = true;
-        if (returnFocus && dialogReturnFocus && typeof dialogReturnFocus.focus === "function") dialogReturnFocus.focus();
-      }
-
-      function completeExecution() {
-        clearInterval(executionTimer);
-        executionTimer = null;
-        state.workbench.execution.running = false;
-        state.workbench.execution.paused = false;
-        state.workbench.execution.progress = 100;
-        state.workbench.view = "receipt";
-        renderWorkbench();
-        saveState();
-        announce("执行完成：对象、活动与销售工作台队列已按顺序回写");
-      }
-
-      function scheduleExecution() {
-        clearInterval(executionTimer);
-        if (!state.workbench.execution.running || state.workbench.execution.paused) return;
-        executionTimer = setInterval(() => {
-          if (!state.workbench.execution.running || state.workbench.execution.paused) return;
-          state.workbench.execution.progress = Math.min(100, state.workbench.execution.progress + 14);
-          renderExecutionMonitor();
-          renderAgentWorkbenchContext();
-          saveState();
-          if (state.workbench.execution.progress >= 100) completeExecution();
-        }, 850);
-      }
-
-      function startExecution() {
-        closeActionPreviewDialog(false);
-        state.workbench.execution = { running: true, paused: false, progress: 8 };
-        renderWorkbench();
-        saveState();
-        scheduleExecution();
-        setAgent(true, false);
-        announce("已开始执行；任务将在后台继续，右上方可随时暂停或接管");
-      }
-
-      function toggleExecutionPause() {
-        const execution = state.workbench.execution;
-        if (!execution.running && !execution.paused) return;
-        execution.paused = !execution.paused;
-        execution.running = !execution.paused;
-        if (execution.running) scheduleExecution();
-        else clearInterval(executionTimer);
-        renderExecutionMonitor();
-        renderAgentWorkbenchContext();
-        saveState();
-        announce(execution.paused ? "执行已暂停" : "执行已继续");
-      }
-
-      function takeoverExecution() {
-        clearInterval(executionTimer);
-        executionTimer = null;
-        state.workbench.execution = { running: false, paused: false, progress: 0 };
-        executionMonitorPopover.hidden = true;
-        executionMonitorButton.setAttribute("aria-expanded", "false");
-        state.workbench.view = "focus";
-        renderWorkbench();
-        saveState();
-        announce("已手动接管；自动执行已停止，返回北辰科技商机处理页");
-        requestAnimationFrame(() => document.getElementById("openEvidenceView").focus());
       }
 
       function openDataPopover() {
@@ -1929,166 +1855,11 @@
       closeSessions.addEventListener("click", closeSessionDrawer);
       newConversation.addEventListener("click", startNewConversation);
       continueChat.addEventListener("click", resumeLatestConversation);
-
-      ["startPriority", "openNorthstarActivity"].forEach((id) => document.getElementById(id).addEventListener("click", () => showWorkbenchView("scene", "backToRole")));
-      document.getElementById("backToRole").addEventListener("click", () => showWorkbenchView("role", "startPriority"));
-      document.getElementById("backToScene").addEventListener("click", () => showWorkbenchView("role", "startPriority"));
-      document.getElementById("backToSceneObjects").addEventListener("click", () => showWorkbenchView("scene", "backToRole"));
-      document.getElementById("backToFocus").addEventListener("click", () => showWorkbenchView("focus", "openEvidenceView"));
-      document.getElementById("closeEvidenceView").addEventListener("click", () => showWorkbenchView("focus", "openEvidenceView"));
-      document.getElementById("openEvidenceView").addEventListener("click", () => showWorkbenchView("evidence", "backToFocus"));
-      document.getElementById("generateNextStep").addEventListener("click", () => setAgent(true));
-      document.getElementById("openSceneAgent").addEventListener("click", () => setAgent(true));
-      document.getElementById("openFocusAgent").addEventListener("click", () => setAgent(true));
-      document.getElementById("openActionPreview").addEventListener("click", openActionPreviewDialog);
-      document.getElementById("closeActionPreview").addEventListener("click", () => closeActionPreviewDialog());
-      document.getElementById("cancelActionPreview").addEventListener("click", () => closeActionPreviewDialog());
-      actionPreviewDialog.addEventListener("click", (event) => { if (event.target === actionPreviewDialog) closeActionPreviewDialog(); });
-      confirmEvidence.addEventListener("change", () => { approveAction.disabled = !confirmEvidence.checked; });
-      approveAction.addEventListener("click", startExecution);
-
-      activityObjectList.addEventListener("click", (event) => {
-        const target = event.target.closest("[data-object]");
-        if (!target) return;
-        state.workbench.selectedObject = target.dataset.object;
-        renderObjectPeek();
-        renderAgentWorkbenchContext();
-        saveState();
-        announce("已轻览" + objectData[target.dataset.object].title);
-      });
-      document.getElementById("returnFromPeek").addEventListener("click", () => {
-        state.workbench.selectedObject = null;
-        renderObjectPeek();
-        saveState();
-        activityObjectList.querySelector("[data-object]")?.focus();
-      });
-      document.getElementById("openObjectFocus").addEventListener("click", () => showWorkbenchView("focus", "backToScene"));
-      document.querySelector(".wb-tabs").addEventListener("click", (event) => {
-        const tab = event.target.closest("[data-focus-tab]");
-        if (!tab) return;
-        state.workbench.focusTab = tab.dataset.focusTab;
-        renderFocusTab();
-        saveState();
-      });
-      document.getElementById("focusTabPanel").addEventListener("click", (event) => {
-        if (event.target.closest("[data-open-evidence]")) showWorkbenchView("evidence", "backToFocus");
-        const evidence = event.target.closest("[data-evidence]");
-        if (evidence) showToast(evidence.dataset.evidence === "contact" ? "联系人证据待补充" : "已定位对应来源");
-      });
-      evidenceView.addEventListener("click", (event) => {
-        const evidence = event.target.closest("[data-evidence]");
-        if (evidence) showToast(evidence.dataset.evidence === "contact" ? "联系人关系尚缺证据" : "已定位对应来源");
-      });
-
-      document.getElementById("excludeMissingEvidence").addEventListener("click", () => {
-        state.workbench.workingScope = 9;
-        renderWorkbench();
-        saveState();
-        announce("页面工作范围已调整为 9 个商机，尚未应用到 Agent");
-      });
-      document.getElementById("restoreScope").addEventListener("click", () => {
-        state.workbench.workingScope = state.workbench.committedScope;
-        renderWorkbench();
-        saveState();
-        announce("已恢复 Agent 当前采用的范围");
-      });
-      document.getElementById("commitScope").addEventListener("click", () => {
-        state.workbench.committedScope = state.workbench.workingScope;
-        renderWorkbench();
-        saveState();
-        announce("页面范围已应用到 Agent");
-      });
-      document.getElementById("rebaseScope").addEventListener("click", () => {
-        setAgent(true);
-        announce("已打开 Agent，用于比较范围差异后重算");
-      });
-      document.getElementById("searchWorkbenchObject").addEventListener("click", () => {
-        const globalSearchInput = document.querySelector(".global-search input");
-        globalSearchInput.value = "北辰科技";
-        globalSearchInput.focus();
-        showToast("已填入北辰科技，可继续搜索");
-      });
-
-      executionMonitorButton.addEventListener("click", (event) => {
-        event.stopPropagation();
-        executionMonitorPopover.hidden = !executionMonitorPopover.hidden;
-        executionMonitorButton.setAttribute("aria-expanded", String(!executionMonitorPopover.hidden));
-      });
-      pauseExecutionButton.addEventListener("click", toggleExecutionPause);
-      document.getElementById("takeoverExecution").addEventListener("click", takeoverExecution);
-      document.getElementById("returnToExecution").addEventListener("click", () => {
-        performMenuSelection("销售工作台");
-        showWorkbenchView("evidence", "backToFocus");
-        executionMonitorPopover.hidden = true;
-      });
-      document.getElementById("returnToObjectAfterReceipt").addEventListener("click", () => showWorkbenchView("focus", "openEvidenceView"));
-      document.getElementById("finishActivity").addEventListener("click", () => {
-        state.workbench.execution = { running: false, paused: false, progress: 0 };
-        showWorkbenchView("role", "startPriority");
-      });
-
-      agentWorkbenchContext.addEventListener("click", (event) => {
-        const action = event.target.closest("[data-agent-action]")?.dataset.agentAction;
-        if (!action) return;
-        if (action === "start-activity") showWorkbenchView("scene", "backToRole");
-        if (action === "commit-scope") {
-          state.workbench.committedScope = state.workbench.workingScope;
-          renderWorkbench();
-          saveState();
-          announce("页面范围已应用到 Agent");
-        }
-        if (action === "open-opportunity") {
-          state.workbench.selectedObject = "opportunity";
-          showWorkbenchView("focus", "backToScene");
-        }
-        if (action === "source-opportunity" || action === "source-contact") showToast(action === "source-contact" ? "联系人证据待补充" : "已定位商机对象字段");
-        if (action === "open-evidence") showWorkbenchView("evidence", "backToFocus");
-        if (action === "preview") openActionPreviewDialog();
-        if (action === "pause") toggleExecutionPause();
-        if (action === "takeover") takeoverExecution();
-      });
-
-      document.getElementById("cancelMenuSwitch").addEventListener("click", () => {
-        pendingMenuName = null;
-        switchGuardDialog.hidden = true;
-        document.querySelector('[data-menu="销售工作台"]')?.focus();
-      });
-      document.getElementById("continueAndSwitch").addEventListener("click", () => {
-        const target = pendingMenuName;
-        pendingMenuName = null;
-        switchGuardDialog.hidden = true;
-        if (target) performMenuSelection(target);
-      });
-      document.getElementById("pauseAndSwitch").addEventListener("click", () => {
-        if (state.workbench.execution.running) toggleExecutionPause();
-        const target = pendingMenuName;
-        pendingMenuName = null;
-        switchGuardDialog.hidden = true;
-        if (target) performMenuSelection(target);
-      });
-
-      agentResizer.addEventListener("pointerdown", (event) => {
-        event.preventDefault();
-        agentResizer.setPointerCapture(event.pointerId);
-        const startX = event.clientX;
-        const startWidth = state.agent.panelWidth;
-        const move = (moveEvent) => {
-          state.agent.panelWidth = Math.min(520, Math.max(320, startWidth + startX - moveEvent.clientX));
-          document.documentElement.style.setProperty("--agent-width", state.agent.panelWidth + "px");
-        };
-        const up = () => {
-          agentResizer.removeEventListener("pointermove", move);
-          agentResizer.removeEventListener("pointerup", up);
-          saveState();
-        };
-        agentResizer.addEventListener("pointermove", move);
-        agentResizer.addEventListener("pointerup", up);
-      });
-      agentResizer.addEventListener("keydown", (event) => {
-        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-        event.preventDefault();
-        state.agent.panelWidth = Math.min(520, Math.max(320, state.agent.panelWidth + (event.key === "ArrowLeft" ? 16 : -16)));
-        document.documentElement.style.setProperty("--agent-width", state.agent.panelWidth + "px");
+      popoutAgent.addEventListener("click", () => {
+        state.agent.floating = !state.agent.floating;
+        panel.classList.toggle("floating", state.agent.floating);
+        popoutAgent.setAttribute("aria-pressed", String(state.agent.floating));
+        popoutAgent.title = state.agent.floating ? "贴靠侧边" : "小窗展示";
         saveState();
       });
 
@@ -2144,6 +1915,63 @@
         modelSelector.setAttribute("aria-expanded", "false");
         saveState();
         showToast("已切换至" + state.agent.model);
+      });
+
+      workspaceCard.addEventListener("click", (event) => {
+        const refresh = event.target.closest("[data-workbench-refresh]");
+        if (refresh) {
+          const root = workspaceCard.querySelector(".workbench-root");
+          if (root) root.classList.add("wb-loading");
+          refresh.disabled = true;
+          setTimeout(() => {
+            if (root && root.isConnected) root.classList.remove("wb-loading");
+            if (refresh.isConnected) refresh.disabled = false;
+            showToast("工作台数据已刷新");
+          }, 360);
+          return;
+        }
+        const actionTrigger = event.target.closest("[data-workbench-action]");
+        if (actionTrigger) {
+          openWorkbenchAction(actionTrigger.dataset.workbenchAction);
+          return;
+        }
+        const trigger = event.target.closest("[data-route], [data-context-id]");
+        if (!trigger) return;
+        const route = trigger.dataset.route;
+        const contextId = trigger.dataset.contextId;
+        if (route) navigateWorkbench(route);
+        if (contextId) showAgentContext(contextId);
+      });
+
+      agentWorkbenchContext.addEventListener("click", (event) => {
+        const processToggle = event.target.closest("[data-context-process-toggle]");
+        if (processToggle) {
+          const detail = agentWorkbenchContext.querySelector("[data-context-process-detail]");
+          const expanded = processToggle.getAttribute("aria-expanded") === "true";
+          processToggle.setAttribute("aria-expanded", String(!expanded));
+          if (detail) detail.hidden = expanded;
+          return;
+        }
+        const routeTrigger = event.target.closest("[data-context-route]");
+        if (routeTrigger) {
+          navigateWorkbench(routeTrigger.dataset.contextRoute);
+          return;
+        }
+        const actionTrigger = event.target.closest("[data-context-action]");
+        if (actionTrigger) openWorkbenchAction(actionTrigger.dataset.contextAction);
+      });
+
+      closeWorkbenchActionButton.addEventListener("click", () => closeWorkbenchAction());
+      cancelWorkbenchAction.addEventListener("click", () => closeWorkbenchAction());
+      workbenchActionDialog.addEventListener("click", (event) => {
+        if (event.target === workbenchActionDialog) closeWorkbenchAction();
+      });
+      confirmWorkbenchAction.addEventListener("click", () => {
+        const actionId = pendingWorkbenchAction;
+        const action = WORKBENCH_ACTIONS[actionId];
+        closeWorkbenchAction(false);
+        if (!action) return;
+        showToast(actionId === "claim-tender" ? "标讯已加入待确认清单" : actionId === "upload-minutes" ? "已打开纪要选择入口" : action.title + "草稿已生成");
       });
 
       crmMenuList.addEventListener("click", (event) => {
@@ -2215,25 +2043,12 @@
           modelSelector.setAttribute("aria-expanded", "false");
         }
         if (!dataPopover.hidden && !dataPopover.contains(event.target) && !dataMenuButton.contains(event.target)) closeDataPopover();
-        if (!executionMonitorPopover.hidden && !executionMonitorPopover.contains(event.target) && !executionMonitorButton.contains(event.target)) {
-          executionMonitorPopover.hidden = true;
-          executionMonitorButton.setAttribute("aria-expanded", "false");
-        }
       });
       document.addEventListener("keydown", (event) => {
         if (event.key !== "Escape") return;
-        if (!actionPreviewDialog.hidden) closeActionPreviewDialog();
-        else if (!switchGuardDialog.hidden) {
-          pendingMenuName = null;
-          switchGuardDialog.hidden = true;
-          document.querySelector('[data-menu="销售工作台"]')?.focus();
-        } else if (!menuDialog.hidden) closeMenuConfig();
+        if (!workbenchActionDialog.hidden) closeWorkbenchAction();
+        else if (!menuDialog.hidden) closeMenuConfig();
         else if (!dataPopover.hidden) closeDataPopover();
-        else if (!executionMonitorPopover.hidden) {
-          executionMonitorPopover.hidden = true;
-          executionMonitorButton.setAttribute("aria-expanded", "false");
-          executionMonitorButton.focus();
-        }
         else if (!modelMenu.hidden) {
           modelMenu.hidden = true;
           modelSelector.setAttribute("aria-expanded", "false");
@@ -2245,8 +2060,6 @@
 
       renderCustomMenus();
       applyAgentState();
-      renderWorkbench();
-      if (state.workbench.execution.running) scheduleExecution();
       saveState();
     })();
   </script>
