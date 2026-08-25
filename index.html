@@ -371,13 +371,37 @@
     .wb-route { min-height: 36px; flex: 0 0 auto; padding: 0 13px; color: var(--muted); background: transparent; border: 0; border-radius: 6px; font-size: 13px; font-weight: 510; }
     .wb-route:hover { color: var(--fg); background: var(--surface); }
     .wb-route.active { color: var(--fg); background: var(--surface); box-shadow: 0 0 0 1px var(--border); }
-    .wb-brief { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 16px; margin-top: 16px; padding: 16px 18px; color: var(--fg); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 8px 24px color-mix(in oklch, var(--fg) 6%, transparent); }
-    .wb-brief-icon { display: grid; width: 40px; height: 40px; place-items: center; color: var(--fg); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 1px 2px color-mix(in oklch, var(--fg) 7%, transparent); }
+    .wb-brief {
+      --bg: oklch(100% 0 89.88);
+      --surface: oklch(97.064% 0.00171 67.8);
+      --fg: oklch(0% 0 0 / 95%);
+      --fg-2: oklch(30.948% 0.0038 84.58);
+      --muted: oklch(48.078% 0.00816 67.63);
+      --border: oklch(0% 0 0 / 10%);
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+      padding: 20px 22px;
+      color: var(--fg);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow:
+        oklch(0% 0 0 / 4%) 0 4px 18px,
+        oklch(0% 0 0 / 2.7%) 0 2px 7.85px,
+        oklch(0% 0 0 / 2%) 0 .8px 2.93px,
+        oklch(0% 0 0 / 1%) 0 .175px 1.04px;
+      font-family: "NotionInter", "Inter", -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-feature-settings: "lnum", "locl";
+    }
+    .wb-brief-icon { display: grid; width: 40px; height: 40px; place-items: center; color: var(--fg-2); background: var(--surface); border: 0; border-radius: 8px; box-shadow: none; }
     .wb-brief-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
     .wb-brief-copy { min-width: 0; }
-    .wb-brief-label { margin-bottom: 5px; color: var(--fg); font-size: 15px; font-weight: 590; line-height: 1.35; }
-    .wb-brief p { max-width: 82ch; margin: 0; color: color-mix(in oklch, var(--muted) 82%, var(--fg)); font-size: 13px; line-height: 1.6; text-wrap: pretty; }
-    .wb-brief .wb-btn-primary { min-width: 120px; color: var(--fg); box-shadow: 0 1px 2px color-mix(in oklch, var(--fg) 12%, transparent); }
+    .wb-brief-label { margin-bottom: 5px; color: var(--fg); font-size: 16px; font-weight: 700; line-height: 1.35; }
+    .wb-brief p { max-width: 78ch; margin: 0; color: var(--muted); font-size: 14px; font-weight: 400; line-height: 1.55; text-wrap: pretty; }
+    .wb-brief .wb-btn-primary { min-width: 120px; min-height: 44px; padding-inline: 16px; color: var(--fg); border-radius: 4px; box-shadow: none; font-size: 14px; font-weight: 600; }
     .wb-brief .wb-btn-primary:hover { color: var(--fg); background: color-mix(in oklch, var(--accent) 88%, var(--surface)); border-color: var(--accent); }
     .wb-section { margin-top: 24px; }
     .wb-section-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; }
@@ -438,49 +462,98 @@
 
     /* Agent 仅在卡片触发后进入上下文模式；默认欢迎页与原有组件保持不变。 */
     .agent-header-title { margin-left: 2px; color: var(--fg); font-size: 13px; font-weight: 590; }
-    .agent-guidance.context-mode { padding: 20px 18px 148px; background: oklch(100% 0 89.88); }
+    .agent-panel.context-mode {
+      --bg: oklch(100% 0 89.88);
+      --surface: oklch(97.064% 0.00171 67.8);
+      --fg: oklch(0% 0 0 / 95%);
+      --fg-2: oklch(30.948% 0.0038 84.58);
+      --muted: oklch(48.078% 0.00816 67.63);
+      --meta: oklch(70.169% 0.01042 72.62);
+      --border: oklch(0% 0 0 / 10%);
+      --border-soft: oklch(0% 0 0 / 6%);
+      --accent: oklch(56.792% 0.18241 254.27);
+      --accent-on: oklch(100% 0 89.88);
+      --accent-hover: oklch(47.275% 0.14737 253.35);
+      --accent-soft: color-mix(in oklch, var(--accent) 10%, transparent);
+      --fg-soft: var(--border-soft);
+      --focus-ring: 0 0 0 3px oklch(59.748% 0.18284 253.3 / 30%);
+      color: var(--fg);
+      background: var(--bg);
+      font-family: "NotionInter", "Inter", -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-feature-settings: "lnum", "locl";
+    }
+    .agent-panel.context-mode .agent-header { background: var(--bg); border-bottom: 1px solid var(--border-soft); }
+    .agent-panel.context-mode .agent-main { background: var(--bg); }
+    .agent-panel.context-mode .agent-icon-button, .agent-panel.context-mode .composer-control { border-radius: 4px; }
+    .agent-panel.context-mode .composer {
+      background: var(--bg);
+      border-color: var(--border);
+      border-radius: 12px;
+      box-shadow:
+        oklch(0% 0 0 / 4%) 0 4px 18px,
+        oklch(0% 0 0 / 2.7%) 0 2px 7.85px,
+        oklch(0% 0 0 / 2%) 0 .8px 2.93px,
+        oklch(0% 0 0 / 1%) 0 .175px 1.04px;
+    }
+    .agent-panel.context-mode .send-button { color: var(--accent-on); background: var(--accent); border-radius: 4px; }
+    .agent-panel.context-mode .send-button:hover:not(:disabled) { color: var(--accent-on); background: var(--accent-hover); filter: none; }
+    .agent-guidance.context-mode { padding: 24px 20px 148px; background: oklch(100% 0 89.88); }
     .agent-context-transcript {
-      --bg: oklch(96.027% 0.01339 281.56);
-      --surface: oklch(100% 0 89.88);
-      --fg: oklch(19.826% 0.01184 254.11);
-      --muted: oklch(56.609% 0.00949 271.25);
-      --border: oklch(89.429% 0.00293 264.54);
+      --bg: oklch(100% 0 89.88);
+      --surface: oklch(97.064% 0.00171 67.8);
+      --fg: oklch(0% 0 0 / 95%);
+      --fg-2: oklch(30.948% 0.0038 84.58);
+      --muted: oklch(48.078% 0.00816 67.63);
+      --meta: oklch(70.169% 0.01042 72.62);
+      --border: oklch(0% 0 0 / 10%);
+      --border-soft: oklch(0% 0 0 / 6%);
+      --accent: oklch(56.792% 0.18241 254.27);
+      --accent-hover: oklch(47.275% 0.14737 253.35);
+      --focus-ring: 0 0 0 3px oklch(59.748% 0.18284 253.3 / 30%);
+      --elev-raised:
+        oklch(0% 0 0 / 4%) 0 4px 18px,
+        oklch(0% 0 0 / 2.7%) 0 2px 7.85px,
+        oklch(0% 0 0 / 2%) 0 .8px 2.93px,
+        oklch(0% 0 0 / 1%) 0 .175px 1.04px;
       display: flex;
       flex-direction: column;
       color: var(--fg);
-      background: var(--surface);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      font-family: "NotionInter", "Inter", -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-feature-settings: "lnum", "locl";
     }
-    .agent-context-transcript button:focus-visible { outline: 2px solid color-mix(in oklch, var(--fg) 44%, transparent); outline-offset: 2px; }
-    .agent-context-user { align-self: flex-end; width: min(88%, 320px); padding: 10px 12px; color: var(--fg); background: var(--bg); border: 0; border-radius: 9px; font-size: 13px; line-height: 1.6; }
-    .agent-context-time { align-self: center; margin-top: 10px; color: var(--muted); font-size: 11px; line-height: 1.4; font-variant-numeric: tabular-nums; }
-    .agent-context-process { display: inline-flex; width: 100%; min-height: 44px; align-items: center; gap: 6px; margin-top: 14px; padding: 0; color: var(--muted); background: transparent; border: 0; font-size: 12px; font-weight: 500; text-align: left; }
+    .agent-context-transcript button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; box-shadow: var(--focus-ring); }
+    .agent-context-user { align-self: flex-end; width: min(88%, 320px); padding: 10px 12px; color: var(--fg); background: var(--surface); border: 0; border-radius: 8px; font-size: 14px; font-weight: 400; line-height: 1.55; }
+    .agent-context-time { align-self: center; margin-top: 10px; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 1.4; font-variant-numeric: tabular-nums; }
+    .agent-context-process { display: inline-flex; width: 100%; min-height: 44px; align-items: center; gap: 6px; margin-top: 14px; padding: 0; color: var(--muted); background: transparent; border: 0; font-size: 13px; font-weight: 500; text-align: left; }
     .agent-context-process:hover { color: var(--fg); }
     .agent-context-process .fx-svg { width: 12px; height: 12px; transition: transform .16s ease; }
-    .agent-context-process[aria-expanded="true"] .fx-svg { transform: rotate(180deg); }
-    .agent-context-process-detail { margin: 0 0 4px; padding: 9px 11px; color: var(--muted); background: color-mix(in oklch, var(--bg) 48%, var(--surface)); border: 0; border-radius: 6px; font-size: 11px; line-height: 1.6; }
-    .agent-context-rule { height: 1px; margin: 8px 0 20px; background: var(--border); border: 0; }
-    .agent-context-answer { color: var(--fg); font-size: 13px; line-height: 1.72; }
-    .agent-context-answer-title { margin: 0 0 12px; color: var(--fg); font-size: 17px; font-weight: 650; line-height: 1.45; letter-spacing: -.012em; }
-    .agent-context-source { display: grid; grid-template-columns: 30px minmax(0, 1fr) 14px; align-items: center; gap: 10px; margin-bottom: 14px; padding: 10px 11px; color: var(--fg); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
-    .agent-context-source-icon { display: grid; width: 30px; height: 30px; place-items: center; color: var(--muted); background: var(--bg); border-radius: 6px; }
+    .agent-context-process[aria-expanded="true"] .fx-svg { transform: rotate(90deg); }
+    .agent-context-process-detail { margin: 0 0 4px; padding: 10px 12px; color: var(--muted); background: var(--surface); border: 0; border-radius: 4px; font-size: 12px; line-height: 1.55; }
+    .agent-context-rule { height: 1px; margin: 8px 0 24px; background: var(--border); border: 0; }
+    .agent-context-answer { color: var(--fg); font-size: 14px; font-weight: 400; line-height: 1.65; }
+    .agent-context-answer-title { margin: 0 0 14px; color: var(--fg); font-size: 18px; font-weight: 700; line-height: 1.35; letter-spacing: -.01em; }
+    .agent-context-source { display: grid; grid-template-columns: 30px minmax(0, 1fr) 14px; align-items: center; gap: 10px; margin-bottom: 18px; padding: 10px 12px; color: var(--fg); background: var(--bg); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--elev-raised); }
+    .agent-context-source-icon { display: grid; width: 30px; height: 30px; place-items: center; color: var(--accent); background: transparent; border-radius: 4px; }
     .agent-context-source-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
-    .agent-context-source-name { min-width: 0; overflow-wrap: anywhere; font-size: 13px; font-weight: 550; line-height: 1.45; }
+    .agent-context-source-name { min-width: 0; overflow-wrap: anywhere; font-size: 14px; font-weight: 600; line-height: 1.45; }
     .agent-context-source-chevron { width: 14px; height: 14px; color: var(--muted); }
     .agent-context-answer > p { margin: 0; }
-    .agent-context-section { margin-top: 20px; }
-    .agent-context-answer h2 { margin: 0 0 9px; color: var(--fg); font-size: 14px; font-weight: 650; line-height: 1.5; }
+    .agent-context-section { margin-top: 24px; }
+    .agent-context-answer h2 { margin: 0 0 9px; color: var(--fg); font-size: 15px; font-weight: 700; line-height: 1.45; }
     .agent-context-answer ul { margin: 0; padding-left: 19px; color: var(--fg); }
     .agent-context-answer li { padding-left: 2px; }
     .agent-context-answer li + li { margin-top: 7px; }
-    .agent-context-answer strong { font-weight: 650; }
-    .agent-context-feedback { display: flex; align-items: center; gap: 2px; margin: 18px 0 14px; }
-    .agent-context-feedback-button { display: grid; width: 44px; height: 44px; place-items: center; padding: 0; color: var(--muted); background: transparent; border: 0; border-radius: 6px; }
-    .agent-context-feedback-button:hover, .agent-context-feedback-button[aria-pressed="true"] { color: var(--fg); background: color-mix(in oklch, var(--bg) 62%, var(--surface)); }
+    .agent-context-answer strong { font-weight: 600; }
+    .agent-context-feedback { display: flex; align-items: center; gap: 2px; margin: 20px 0 14px; }
+    .agent-context-feedback-button { display: grid; width: 44px; height: 44px; place-items: center; padding: 0; color: var(--muted); background: transparent; border: 0; border-radius: 4px; transition: color .15s ease, background .15s ease, transform .05s ease; }
+    .agent-context-feedback-button:hover, .agent-context-feedback-button[aria-pressed="true"] { color: var(--fg); background: var(--border-soft); }
+    .agent-context-feedback-button:active { transform: scale(.96); }
     .agent-context-feedback-button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
     .agent-context-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-    .agent-context-action { display: inline-flex; min-height: 44px; max-width: 100%; align-items: center; gap: 8px; padding: 8px 12px; color: var(--fg); background: var(--bg); border: 0; border-radius: 999px; font-size: 12px; font-weight: 500; line-height: 1.45; text-align: left; }
-    .agent-context-action:hover { color: var(--fg); background: color-mix(in oklch, var(--bg) 82%, var(--border)); }
+    .agent-context-action { display: inline-flex; min-height: 44px; max-width: 100%; align-items: center; gap: 8px; padding: 8px 12px; color: var(--fg); background: var(--border-soft); border: 1px solid transparent; border-radius: 4px; font-size: 13px; font-weight: 500; line-height: 1.45; text-align: left; transition: background .15s ease, border-color .15s ease, transform .05s ease; }
+    .agent-context-action:hover { color: var(--fg); background: color-mix(in oklch, var(--fg) 9%, transparent); border-color: var(--border); }
+    .agent-context-action:active { transform: scale(.98); }
     .agent-context-action .action-arrow { width: 14px; height: 14px; flex: 0 0 auto; color: var(--muted); }
     .workbench-action-dialog { width: min(520px, calc(100vw - 32px)); }
     .wb-dialog-copy { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
@@ -1576,7 +1649,7 @@
           '<div class="agent-context-user" data-od-id="agent-context-user-message">' + escapeHtml(context.prompt) + '</div>',
           '<time class="agent-context-time" data-od-id="agent-context-time">' + formatAgentContextTime() + '</time>',
           '<button class="agent-context-process" type="button" aria-expanded="false" data-context-process-toggle data-od-id="agent-context-process-toggle">',
-            '<svg class="fx-svg" aria-hidden="true"><use href="#fx-arrow-down"></use></svg>',
+            '<svg class="fx-svg" aria-hidden="true"><use href="#fx-arrow-right"></use></svg>',
             '<span>已处理当前卡片与关联业务数据</span>',
           '</button>',
           '<div class="agent-context-process-detail" data-context-process-detail hidden>已核对“' + escapeHtml(source) + '”、关联客户或商机，以及页面中显示的截止时间；以下内容仅使用当前原型已有数据。</div>',
@@ -1607,6 +1680,7 @@
         agentWorkbenchContext.hidden = false;
         agentHero.hidden = true;
         chatLog.replaceChildren();
+        panel.classList.add("context-mode");
         agentGuidance.classList.add("context-mode");
         document.querySelectorAll("[data-context-id]").forEach((element) => {
           element.classList.toggle("is-active", element.dataset.contextId === contextId);
@@ -1625,6 +1699,7 @@
         agentContextTitle.hidden = true;
         agentWorkbenchContext.hidden = true;
         agentWorkbenchContext.replaceChildren();
+        panel.classList.remove("context-mode");
         agentGuidance.classList.remove("context-mode");
         document.querySelectorAll("[data-context-id]").forEach((element) => element.classList.remove("is-active"));
       }
@@ -1742,6 +1817,7 @@
         const session = getActiveSession();
         const hasContext = Boolean(activeAgentContextId && WORKBENCH_CONTEXTS[activeAgentContextId]);
         agentWorkbenchContext.hidden = !hasContext;
+        panel.classList.toggle("context-mode", hasContext);
         agentGuidance.classList.toggle("context-mode", hasContext);
         agentHero.hidden = hasContext || Boolean(session);
         if (session) session.messages.forEach(addBubble);
